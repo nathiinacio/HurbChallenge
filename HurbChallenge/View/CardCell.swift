@@ -110,14 +110,10 @@ class CardCell: UICollectionViewCell {
      cell.showHotel()
      ```
      */
-//    func showHotel() {
-//        if let hotel = place,
-//            type == .hotel {
-//
-//            // Icon of Workplace
-//            let imageIcon = UIImage(named: "WorkplaceIcon")
-//            changedIcon.image = imageIcon
-//
+    func showHotel() {
+        if let hotel = place,
+            type == .hotel {
+
 //            // Checking if the flag is selected or not
 //            if let favorites = MyUser.instance.fields.favoritesUsers,
 //                favorites.contains(where: { u in if u.id == user.id { return true } else { return false } }) {
@@ -129,73 +125,35 @@ class CardCell: UICollectionViewCell {
 //                isFlagged = false
 //                flagButton.isSelected = false
 //            }
-//
-//            // Description
-//            definition.text = user.fields.fieldsDescription ?? ""
-//
-//            // Type
-//            identifier.text = user.fields.type?.fields.name ?? ""
-//
-//            // Occupation
-//            informationLabel.text = "\(user.fields.occupation ?? "")"
-//
-//            // Lab
-//            if let placeLabelText = user.fields.lab.first?.fields.name {
-//                placeLabel.text = placeLabelText
-//
-//                switch placeLabelText {
-//                case "Apple Developer Academy":
-//                    placeLabel.textColor = .darkYellow
-//                case "Globolab":
-//                    placeLabel.textColor = .darkPink
-//                case "Insurtech":
-//                    placeLabel.textColor = .darkBlue
-//                default:
-//                    break
-//                }
-//            }
-//
-//            // Tags
-//            if let tags = user.fields.tags {
-//                switch tags.count {
-//                case 0:
-//                    tag1.isHidden = true
-//                    tag2.isHidden = true
-//                    tag3.isHidden = true
-//                case 1:
-//                    tag1.text = tags[0].fields.name
-//                    tag2.isHidden = true
-//                    tag3.isHidden = true
-//                case 2:
-//                    tag1.text = tags[0].fields.name
-//                    tag2.text = tags[1].fields.name
-//                    tag3.isHidden = true
-//                case 3:
-//                    tag1.text = tags[0].fields.name
-//                    tag2.text = tags[1].fields.name
-//                    tag3.text = tags[2].fields.name
-//                default:
-//                    tag1.text = tags[0].fields.name
-//                    tag2.text = tags[1].fields.name
-//                    tag3.text = tags[2].fields.name
-//                }
-//            } else {
-//                tag1.isHidden = true
-//                tag2.isHidden = true
-//                tag3.isHidden = true
-//            }
-//
-//            // Name
-//            title.text = user.fields.name
-//
+
+            // Description
+            definition.text = hotel.results.description
+
+            // Amenities
+//            amenity1.text = hotel.filters
+//            amenity2.text = hotel.filters.amenities[1]
+//            amenity3.text = hotel.filters.amenities[2]
+            
+            
+            // Name
+           // title.text = hotel.filters.
+
+            
+            //Local
+            
+            
+            
+            //Price
+            // title.text = hotel.results.
+            
 //            // Image
 //            if let path = user.fields.image?.first?.url {
 //                if let url = URL(string: path) {
 //                    addImageToView(imageURL: url, imageView: photo)
 //                }
 //            }
-//        }
-//    }
+        }
+    }
     
     /**
      It configures the card with the `Project`.
@@ -210,102 +168,10 @@ class CardCell: UICollectionViewCell {
      cell.showInfoProject()
      ```
      */
+    
+    
 //    func showPackage() {
-//        if let package = place,
-//            type == .package {
-//
-//            // Icon of Profile
-//            let imageIcon = UIImage(named: "ProfileIcon")
-//            changedIcon.image = imageIcon
-//
-//            // Checking if the flag is selected or not
-//            if let favorites = MyUser.instance.fields.favoriteProjects,
-//                favorites.contains(where:
-//                    { u in if u.id == project.id { return true } else { return false } }) {
-//                flagButton.imageView?.image = UIImage(named: "SaveFlagSelected")
-//                isFlagged = true
-//                flagButton.isSelected = true
-//            } else {
-//                flagButton.imageView?.image = UIImage(named: "SaveFlag")
-//                isFlagged = false
-//                flagButton.isSelected = false
-//            }
-//
-//            // Description
-//            definition.text = project.fields.fieldsDescription ?? ""
-//
-//            // Platform
-//            identifier.text = project.fields.platform?.first?.fields.name ?? ""
-//
-//            // Users names
-//            let users = project.fields.users
-//
-//            if users.count > 0 {
-//                informationLabel.text = "\(users[0].fields.name)"
-//                if users.count >= 2 {
-//                    for i in 1...users.count-1 {
-//                        informationLabel.text = "\(informationLabel.text ?? ""), \(users[i].fields.name) "
-//                    }
-//                }
-//            }
-//
-//            // Lab
-//            if let placeLabelText = project.fields.lab?.fields.name {
-//                placeLabel.text = placeLabelText
-//
-//                switch placeLabelText {
-//                case "Apple Developer Academy":
-//                    placeLabel.textColor = .darkYellow
-//                case "Globolab":
-//                    placeLabel.textColor = .darkPink
-//                case "Insurtech":
-//                    placeLabel.textColor = .darkBlue
-//                default:
-//                    break
-//                }
-//            }
-//
-//            // Tags
-//            if let tags = project.fields.tags {
-//                switch tags.count {
-//                case 0:
-//                    tag1.isHidden = true
-//                    tag2.isHidden = true
-//                    tag3.isHidden = true
-//                case 1:
-//                    tag1.text = tags[0].fields.name
-//                    tag2.isHidden = true
-//                    tag3.isHidden = true
-//                case 2:
-//                    tag1.text = tags[0].fields.name
-//                    tag2.text = tags[1].fields.name
-//                    tag3.isHidden = true
-//                case 3:
-//                    tag1.text = tags[0].fields.name
-//                    tag2.text = tags[1].fields.name
-//                    tag3.text = tags[2].fields.name
-//                default:
-//                    tag1.text = tags[0].fields.name
-//                    tag2.text = tags[1].fields.name
-//                    tag3.text = tags[2].fields.name
-//                }
-//            } else {
-//                tag1.isHidden = true
-//                tag2.isHidden = true
-//                tag3.isHidden = true
-//            }
-//
-//            // Title
-//            title.text = project.fields.name
-//
-//            // Image
-//            if let path = project.fields.image?.first?.url {
-//                if let url = URL(string: path) {
-//                    addImageToView(imageURL: url, imageView: photo)
-//                }
-//            }
-//        }
-//    }
+//}
     
     // MARK: Auxiliar
     
