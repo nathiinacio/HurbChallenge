@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TNK-Yo-e59">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Splash Screen-->
+        <scene sceneID="by7-Gw-kk3">
+            <objects>
+                <viewController id="TNK-Yo-e59" customClass="SplashScreen" customModule="HurbChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Y9-WK-oaJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyU-iS-QKU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.40000000000000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-1C-V3k">
+                                <rect key="frame" x="67.666666666666686" y="306" width="240" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="dZO-WS-2wL"/>
+                                    <constraint firstAttribute="width" constant="240" id="fdR-ud-W6r"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AyU-iS-QKU" firstAttribute="top" secondItem="2Y9-WK-oaJ" secondAttribute="top" id="2a9-9U-cDh"/>
+                            <constraint firstItem="AyU-iS-QKU" firstAttribute="trailing" secondItem="2Y9-WK-oaJ" secondAttribute="trailing" id="8ec-Eu-pJl"/>
+                            <constraint firstItem="AyU-iS-QKU" firstAttribute="leading" secondItem="2Y9-WK-oaJ" secondAttribute="leading" id="PgU-4P-DCf"/>
+                            <constraint firstItem="Raa-1C-V3k" firstAttribute="centerY" secondItem="2Y9-WK-oaJ" secondAttribute="centerY" id="UPv-Uh-Aw0"/>
+                            <constraint firstItem="AyU-iS-QKU" firstAttribute="bottom" secondItem="2Y9-WK-oaJ" secondAttribute="bottom" id="afp-f1-mfQ"/>
+                            <constraint firstItem="AyU-iS-QKU" firstAttribute="centerX" secondItem="2Y9-WK-oaJ" secondAttribute="centerX" id="dfu-bp-07f"/>
+                            <constraint firstItem="Raa-1C-V3k" firstAttribute="centerX" secondItem="2Y9-WK-oaJ" secondAttribute="centerX" id="sM3-lD-d5v"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dCr-Zx-6SV"/>
+                    </view>
+                    <connections>
+                        <outlet property="splashImage" destination="Raa-1C-V3k" id="OSF-gp-vCi"/>
+                        <outlet property="splashView" destination="AyU-iS-QKU" id="52i-Ph-kYe"/>
+                        <segue destination="1N6-5B-4yK" kind="presentation" identifier="goToStart" animates="NO" id="hLT-xv-pwa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UlL-W6-xUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-288.40579710144931" y="162.72321428571428"/>
+        </scene>
+        <!--Start-->
+        <scene sceneID="bzm-jS-99X">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Start" id="1N6-5B-4yK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mVW-dO-HDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="294" y="175"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="SplashIcon" width="836.33331298828125" height="782"/>
+    </resources>
+</document>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFCompactDisplay-Ultralight.otf">
+            <string>SFCompactDisplay-Ultralight</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Start-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="Start" customModule="HurbChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OpM-Kf-gA4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="434"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashIcon" translatesAutoresizingMaskIntoConstraints="NO" id="76q-6w-RXR">
+                                        <rect key="frame" x="67.666666666666686" y="117" width="240" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="9FR-zy-gLV"/>
+                                            <constraint firstAttribute="width" constant="240" id="czb-r9-P69"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.40000000000000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="76q-6w-RXR" firstAttribute="centerX" secondItem="OpM-Kf-gA4" secondAttribute="centerX" id="nqI-Nr-jjl"/>
+                                    <constraint firstItem="76q-6w-RXR" firstAttribute="centerY" secondItem="OpM-Kf-gA4" secondAttribute="centerY" id="s07-wN-Nn5"/>
+                                    <constraint firstAttribute="height" constant="434" id="yv3-cL-hkr"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9LX-75-H2R">
+                                <rect key="frame" x="80" y="527" width="215" height="70"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.40000000000000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="215" id="CPL-AX-ySS"/>
+                                    <constraint firstAttribute="height" constant="70" id="HuP-Sx-lMY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Ultralight" family="SF Compact Display" pointSize="17"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="SgS-8P-lOk" kind="show" id="09E-vA-ltV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saD-jf-j34">
+                                <rect key="frame" x="80" y="643" width="215" height="70"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.40000000000000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="215" id="1hR-aL-pcs"/>
+                                    <constraint firstAttribute="height" constant="70" id="fqk-Cb-AcB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Ultralight" family="SF Compact Display" pointSize="17"/>
+                                <state key="normal" title="Cadastro">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="A0C-O3-oXb" kind="show" id="Rlz-3J-cQG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OpM-Kf-gA4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="5ir-zK-mza"/>
+                            <constraint firstItem="OpM-Kf-gA4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7HJ-TD-lkf"/>
+                            <constraint firstItem="saD-jf-j34" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Uv-HO-dCo"/>
+                            <constraint firstItem="9LX-75-H2R" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="156" id="BD2-Rp-csc"/>
+                            <constraint firstItem="OpM-Kf-gA4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="I7a-qT-fV1"/>
+                            <constraint firstItem="saD-jf-j34" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="272" id="UTO-N0-qIo"/>
+                            <constraint firstItem="9LX-75-H2R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="auZ-dZ-wwK"/>
+                            <constraint firstItem="OpM-Kf-gA4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o28-Jc-jtV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="createNewAccountButton" destination="saD-jf-j34" id="Ixh-oM-SUi"/>
+                        <outlet property="loginButton" destination="9LX-75-H2R" id="Gdw-pq-aUp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-327.19999999999999" y="-1.4778325123152709"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="9Mm-jF-5IO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="SgS-8P-lOk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kee-tv-e70" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="222" y="-186"/>
+        </scene>
+        <!--NewAccount-->
+        <scene sceneID="075-Oz-6Um">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewAccount" id="A0C-O3-oXb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ukx-tU-R4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="302" y="169"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="SplashIcon" width="836.33331298828125" height="782"/>
+    </resources>
+</document>
