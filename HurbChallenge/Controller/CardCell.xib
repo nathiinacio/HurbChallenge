@@ -51,22 +51,8 @@
                                 <color key="textColor" red="1" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vmax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXx-dw-x6S">
-                                <rect key="frame" x="151" y="112" width="31" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="1" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vmin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGp-8O-vr5">
-                                <rect key="frame" x="197.5" y="112" width="31" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="1" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uU-iK-GU5">
-                                <rect key="frame" x="185" y="112" width="124" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Preço" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXx-dw-x6S">
+                                <rect key="frame" x="151" y="112" width="105" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="1" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -250,13 +236,15 @@
                 <outlet property="amenity3" destination="rYG-rj-MnK" id="FrJ-jZ-ZdN"/>
                 <outlet property="category1" destination="mem-69-Qjx" id="hkP-mZ-3ME"/>
                 <outlet property="category2" destination="2Tg-yx-fQV" id="has-ja-8fM"/>
-                <outlet property="category3" destination="xTE-ue-zlQ" id="KQK-jI-Xct"/>
+                <outlet property="category3" destination="IbX-K9-yss" id="nFr-Yi-i5B"/>
                 <outlet property="category4" destination="TP6-xM-LFr" id="lAz-dq-iYN"/>
                 <outlet property="category5" destination="EK3-b1-vBi" id="WVN-3c-THz"/>
                 <outlet property="definition" destination="U7X-z0-fVP" id="bSh-DX-g1I"/>
                 <outlet property="favoriteButton" destination="zP9-P2-JBC" id="W7s-NO-Pvq"/>
-                <outlet property="minValue" destination="6uU-iK-GU5" id="9Fn-7N-Xfi"/>
+                <outlet property="isAmenityOrAtribute" destination="3Hn-1s-xJ4" id="qsl-8Y-zHe"/>
                 <outlet property="photo" destination="ERA-7I-7RX" id="nIM-ki-e86"/>
+                <outlet property="placeLabel" destination="gmf-fW-vwE" id="XnU-Un-5ud"/>
+                <outlet property="price" destination="yXx-dw-x6S" id="LEb-wr-fIN"/>
                 <outlet property="title" destination="8pP-jd-yRc" id="jez-Wv-uUc"/>
                 <outlet property="view" destination="Lz8-ea-IjL" id="CJ5-17-cfu"/>
             </connections>

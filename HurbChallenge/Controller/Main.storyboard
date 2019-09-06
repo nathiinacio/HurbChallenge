@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favoritos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rH8-qS-1sB">
-                                <rect key="frame" x="40" y="334" width="100" height="27"/>
+                                <rect key="frame" x="40" y="344" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="2uJ-bz-oxx"/>
                                     <constraint firstAttribute="height" constant="27" id="GgN-qW-wgf"/>
@@ -52,7 +52,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite para ver mais tarde!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRd-QE-Lcg">
-                                <rect key="frame" x="81" y="369" width="195" height="18"/>
+                                <rect key="frame" x="81" y="379" width="195" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -108,7 +108,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fka-l7-DzA" firstAttribute="trailing" secondItem="rH8-qS-1sB" secondAttribute="trailing" constant="235" id="0JA-RN-WPL"/>
-                            <constraint firstItem="gC7-VX-wAQ" firstAttribute="top" secondItem="pRd-QE-Lcg" secondAttribute="bottom" constant="37" id="0aB-zg-ECe"/>
+                            <constraint firstItem="gC7-VX-wAQ" firstAttribute="top" secondItem="pRd-QE-Lcg" secondAttribute="bottom" constant="27" id="0aB-zg-ECe"/>
                             <constraint firstItem="9Pn-9N-mQJ" firstAttribute="trailing" secondItem="5g1-mz-nU5" secondAttribute="trailing" constant="-6" id="2g5-lb-sU6"/>
                             <constraint firstItem="DWn-PC-Q3H" firstAttribute="top" secondItem="fka-l7-DzA" secondAttribute="top" constant="32" id="3Kn-oy-Zvd"/>
                             <constraint firstItem="5g1-mz-nU5" firstAttribute="leading" secondItem="fka-l7-DzA" secondAttribute="leading" constant="20" id="5rh-8q-zZD"/>
@@ -120,7 +120,7 @@
                             <constraint firstItem="Yu8-vZ-JUd" firstAttribute="leading" secondItem="fka-l7-DzA" secondAttribute="leading" constant="120" id="Ox8-mE-4c2"/>
                             <constraint firstItem="iYG-ly-1dL" firstAttribute="leading" secondItem="Yu8-vZ-JUd" secondAttribute="trailing" constant="8" id="RnY-AL-Jrs"/>
                             <constraint firstItem="fka-l7-DzA" firstAttribute="trailing" secondItem="Sb2-dl-awH" secondAttribute="trailing" constant="57" id="SCb-R0-pd2"/>
-                            <constraint firstItem="pRd-QE-Lcg" firstAttribute="top" secondItem="iYG-ly-1dL" secondAttribute="bottom" constant="44" id="T64-J1-Vse"/>
+                            <constraint firstItem="pRd-QE-Lcg" firstAttribute="top" secondItem="iYG-ly-1dL" secondAttribute="bottom" constant="54" id="T64-J1-Vse"/>
                             <constraint firstItem="iYG-ly-1dL" firstAttribute="leading" secondItem="Yu8-vZ-JUd" secondAttribute="trailing" constant="8" id="VG5-Nf-d3x"/>
                             <constraint firstItem="Yu8-vZ-JUd" firstAttribute="top" secondItem="Sb2-dl-awH" secondAttribute="bottom" constant="7" id="Vte-b5-plb"/>
                             <constraint firstItem="fka-l7-DzA" firstAttribute="trailing" secondItem="gC7-VX-wAQ" secondAttribute="trailing" constant="16" id="ats-A4-MiH"/>
@@ -136,7 +136,7 @@
                             <constraint firstItem="fka-l7-DzA" firstAttribute="trailing" secondItem="5g1-mz-nU5" secondAttribute="trailing" constant="20" id="v5I-Fw-QdH"/>
                             <constraint firstItem="Yu8-vZ-JUd" firstAttribute="leading" secondItem="fka-l7-DzA" secondAttribute="leading" constant="120" id="wM4-Sa-bGt"/>
                             <constraint firstItem="gC7-VX-wAQ" firstAttribute="bottom" secondItem="fka-l7-DzA" secondAttribute="bottom" constant="-11" id="x5g-z0-EMy"/>
-                            <constraint firstItem="gC7-VX-wAQ" firstAttribute="top" secondItem="pRd-QE-Lcg" secondAttribute="bottom" constant="37" id="xM6-Y6-wDm"/>
+                            <constraint firstItem="gC7-VX-wAQ" firstAttribute="top" secondItem="pRd-QE-Lcg" secondAttribute="bottom" constant="27" id="xM6-Y6-wDm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fka-l7-DzA"/>
                     </view>
@@ -336,7 +336,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="buttonBorder"/>
                                 <connections>
-                                    <action selector="category1Button:" destination="sSZ-63-JzE" eventType="touchUpInside" id="gQj-w6-Lf0"/>
+                                    <action selector="category1Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="rbm-ZV-oD8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFW-9K-Spn">
@@ -344,8 +344,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="buttonBorder"/>
                                 <connections>
-                                    <action selector="category1Button:" destination="sSZ-63-JzE" eventType="touchUpInside" id="ldX-tk-C91"/>
-                                    <action selector="category2Button:" destination="sSZ-63-JzE" eventType="touchUpInside" id="aiH-cJ-uu0"/>
+                                    <action selector="category2Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="T2A-v2-0xQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1z-ML-hhW">
@@ -353,7 +352,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="buttonBorder"/>
                                 <connections>
-                                    <action selector="category3Button:" destination="sSZ-63-JzE" eventType="touchUpInside" id="VWf-I2-TRh"/>
+                                    <action selector="category3Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="bFK-Y0-BTS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xly-3D-lhV">
@@ -361,7 +360,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="buttonBorder"/>
                                 <connections>
-                                    <action selector="category4Button:" destination="sSZ-63-JzE" eventType="touchUpInside" id="CaC-8d-M1Q"/>
+                                    <action selector="category4Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="qi8-4a-WXn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fT3-Y6-MRB">
@@ -369,7 +368,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="buttonBorder"/>
                                 <connections>
-                                    <action selector="category5Button:" destination="sSZ-63-JzE" eventType="touchUpInside" id="WDY-FI-BS8"/>
+                                    <action selector="category5Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="s5g-XH-R69"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Valores:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgi-sV-gKR">
@@ -394,6 +393,9 @@
                                 <state key="normal" title="+ R$1000">
                                     <color key="titleColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="value1Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="6sY-WQ-uGV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcH-zr-mRQ">
                                 <rect key="frame" x="112" y="434" width="129" height="43"/>
@@ -403,6 +405,9 @@
                                 <state key="normal" title="- R$100">
                                     <color key="titleColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="value5Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="RNc-2Z-4cq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbl-20-oka">
                                 <rect key="frame" x="45" y="377" width="129" height="43"/>
@@ -411,6 +416,9 @@
                                 <state key="normal" title="R$300 - R$500">
                                     <color key="titleColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="value3Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="WFQ-op-N6D"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNd-c4-YU9">
                                 <rect key="frame" x="199" y="377" width="129" height="43"/>
@@ -419,6 +427,9 @@
                                 <state key="normal" title="R$100 - R$300">
                                     <color key="titleColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="value4Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="UDS-Kd-D6B"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZD-Gn-cA3">
                                 <rect key="frame" x="199" y="320" width="129" height="43"/>
@@ -427,6 +438,9 @@
                                 <state key="normal" title="R$500 - R$1000">
                                     <color key="titleColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="value2Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="wvp-fV-aOm"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFV-uq-3pp">
                                 <rect key="frame" x="48" y="534" width="129" height="43"/>
@@ -435,6 +449,9 @@
                                 <state key="normal" title="1">
                                     <color key="titleColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="amenity1Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="9mF-1c-kk9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTQ-Le-zD2">
                                 <rect key="frame" x="199" y="592" width="129" height="43"/>
@@ -443,6 +460,9 @@
                                 <state key="normal" title="4">
                                     <color key="titleColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="amenity4Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="qlp-TA-kgo"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKa-NX-XET">
                                 <rect key="frame" x="46" y="592" width="129" height="43"/>
@@ -451,6 +471,9 @@
                                 <state key="normal" title="3">
                                     <color key="titleColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="amenity3Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="ia3-uN-zBn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-kg-dPM">
                                 <rect key="frame" x="201" y="534" width="129" height="43"/>
@@ -459,6 +482,9 @@
                                 <state key="normal" title="2">
                                     <color key="titleColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="amenity2Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="HD0-gx-ado"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Atributos / Amenidades:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wtv-lk-acR">
                                 <rect key="frame" x="27" y="495" width="184" height="21"/>
@@ -480,7 +506,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="searchButton:" destination="sSZ-63-JzE" eventType="touchUpInside" id="KkZ-0w-Iy5"/>
+                                    <action selector="searchButton:" destination="sSZ-63-JzE" eventType="touchUpInside" id="9uL-Iw-R6w"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyQ-RE-ehM">
@@ -490,6 +516,9 @@
                                 <state key="normal" title="5">
                                     <color key="titleColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="amenity5Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="MGa-8i-MsN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -501,6 +530,12 @@
                         <outlet property="amenityButton3" destination="XKa-NX-XET" id="diD-AY-ucA"/>
                         <outlet property="amenityButton4" destination="hTQ-Le-zD2" id="fnX-lH-292"/>
                         <outlet property="amenityButton5" destination="XyQ-RE-ehM" id="3dc-hu-bPX"/>
+                        <outlet property="categoryButton1" destination="HA2-Wc-utK" id="vZ3-0v-4ae"/>
+                        <outlet property="categoryButton2" destination="HFW-9K-Spn" id="PHj-Vy-xuH"/>
+                        <outlet property="categoryButton3" destination="R1z-ML-hhW" id="EpC-bi-Nnd"/>
+                        <outlet property="categoryButton4" destination="xly-3D-lhV" id="XZJ-z9-DCe"/>
+                        <outlet property="categoryButton5" destination="fT3-Y6-MRB" id="HE5-SL-EN3"/>
+                        <outlet property="search" destination="OMF-rL-U74" id="cPh-5j-g0c"/>
                         <outlet property="valueButton1" destination="jsk-Kr-r2f" id="Ewv-Rd-VHb"/>
                         <outlet property="valueButton2" destination="MZD-Gn-cA3" id="tYc-0C-T3l"/>
                         <outlet property="valueButton3" destination="Kbl-20-oka" id="SU7-dF-4Nb"/>

@@ -13,13 +13,7 @@ import UIKit
 
 class CardCell: UICollectionViewCell {
     
-    // MARK: - Enum
-    enum CardType {
-        case package
-        case hotel
-    }
     
-   
     // MARK: Outlets
     
     @IBOutlet weak var view: UIView!
@@ -30,18 +24,19 @@ class CardCell: UICollectionViewCell {
     
     @IBOutlet weak var favoriteButton: UIButton!
     
-    @IBOutlet weak var maxValue: UILabel!
-    @IBOutlet weak var minValue: UILabel!
+    @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var price: UILabel!
     
     @IBOutlet weak var definition: UITextView!
     
+    @IBOutlet weak var isAmenityOrAtribute: UILabel!
     @IBOutlet weak var amenity1: UILabel!
     @IBOutlet weak var amenity3: UILabel!
     @IBOutlet weak var amenity2: UILabel!
     
     @IBOutlet weak var category1: UIImageView!
     @IBOutlet weak var category2: UIImageView!
-    @IBOutlet weak var category3: NSLayoutConstraint!
+    @IBOutlet weak var category3: UIImageView!
     @IBOutlet weak var category4: UIImageView!
     @IBOutlet weak var category5: UIImageView!
     
@@ -52,9 +47,10 @@ class CardCell: UICollectionViewCell {
     
     //var user: Auth.auth().currentUser? = nil
     var place: Hotel? = nil
-    
-    var type: CardType = .package
+ 
     var isFlagged: Bool = false
+    
+    var starsCount = 0
     
     // MARK: - Methods
     
@@ -95,24 +91,125 @@ class CardCell: UICollectionViewCell {
         photo.image = nil
     }
     
-    // MARK: Cell configuration
+    // MARK: Cell population
     
-    /**
-     It configures the card with the `Hotel`.
-     
-     Before calling this funcion you have to set the enum and the hotel.
-     
-     # Example #
-     ```
-     cell.type = .hotel
-     cell.hotel = hotels[indexPath.item]
-     
-     cell.showHotel()
-     ```
-     */
-    func showHotel() {
-        if let hotel = place,
-            type == .hotel {
+    func populateCard(index:Int) {
+        
+        
+            let hotel = place
+   
+            let currentHotel = hotel?.results[index]
+        
+            if currentHotel?.isHotel == true {
+            
+                // Description
+                definition.text = currentHotel?.smallDescription
+                
+                // Amenities
+                
+                isAmenityOrAtribute.text = "Amenidades"
+                amenity1.text = currentHotel?.amenities[0].name
+                amenity2.text = currentHotel?.amenities[1].name
+                amenity3.text = currentHotel?.amenities[2].name
+                
+                
+                // Name
+                 title.text = currentHotel?.name
+                
+                //Local
+                
+                placeLabel.text = currentHotel?.address.city
+            
+                //Price
+                 price.text = currentHotel?.price.currency
+    
+                //Category
+                
+                if currentHotel?.category == "5 estrelas"{
+                    category1.alpha = 1
+                    category2.alpha = 1
+                    category3.alpha = 1
+                    category4.alpha = 1
+                    category5.alpha = 1
+                }else if currentHotel?.category == "4 estrelas"{
+                    category1.alpha = 1
+                    category2.alpha = 1
+                    category3.alpha = 1
+                    category4.alpha = 1
+                    category5.alpha = 0
+                }else if currentHotel?.category == "3 estrelas"{
+                    category1.alpha = 1
+                    category2.alpha = 1
+                    category3.alpha = 1
+                    category4.alpha = 0
+                    category5.alpha = 0
+                }else if currentHotel?.category == "2 estrelas"{
+                    category1.alpha = 1
+                    category2.alpha = 1
+                    category3.alpha = 0
+                    category4.alpha = 0
+                    category5.alpha = 0
+                }else if currentHotel?.category == "1 estrela"{
+                    category1.alpha = 1
+                    category2.alpha = 0
+                    category3.alpha = 0
+                    category4.alpha = 0
+                    category5.alpha = 0
+                }else{
+                    category1.alpha = 0
+                    category2.alpha = 0
+                    category3.alpha = 0
+                    category4.alpha = 0
+                    category5.alpha = 0
+                }
+                
+//            // Image
+//            if let path = user.fields.image?.first?.url {
+//                if let url = URL(string: path) {
+//                    addImageToView(imageURL: url, imageView: photo)
+//                }
+//            }
+
+        }
+        
+        
+        if currentHotel?.isPackage == true {
+            
+            // Description
+            definition.text = currentHotel?.smallDescription
+            
+            // Atributes
+            isAmenityOrAtribute.text = "Atributos"
+            amenity1.text = currentHotel?.amenities[0].name
+            amenity2.text = currentHotel?.amenities[1].name
+            amenity3.text = currentHotel?.amenities[2].name
+            
+            
+            // Name
+            title.text = currentHotel?.name
+            
+            //Local
+            
+            placeLabel.text = currentHotel?.address.city
+            
+            //Price
+            price.text = currentHotel?.price.currency
+            
+            //Category
+            category1.alpha = 0
+            category2.alpha = 0
+            category3.alpha = 0
+            category4.alpha = 0
+            category5.alpha = 0
+            
+//            // Image
+//            if let path = user.fields.image?.first?.url {
+//                if let url = URL(string: path) {
+//                    addImageToView(imageURL: url, imageView: photo)
+//                }
+//            }
+
+        }
 
 //            // Checking if the flag is selected or not
 //            if let favorites = MyUser.instance.fields.favoritesUsers,
@@ -126,53 +223,10 @@ class CardCell: UICollectionViewCell {
 //                flagButton.isSelected = false
 //            }
 
-            // Description
-            definition.text = hotel.results.description
-
-            // Amenities
-//            amenity1.text = hotel.filters
-//            amenity2.text = hotel.filters.amenities[1]
-//            amenity3.text = hotel.filters.amenities[2]
-            
-            
-            // Name
-           // title.text = hotel.filters.
-
-            
-            //Local
-            
-            
-            
-            //Price
-            // title.text = hotel.results.
-            
-//            // Image
-//            if let path = user.fields.image?.first?.url {
-//                if let url = URL(string: path) {
-//                    addImageToView(imageURL: url, imageView: photo)
-//                }
-//            }
-        }
+        
     }
     
-    /**
-     It configures the card with the `Project`.
-     
-     Before calling this funcion you have to set the enum and the project.
-     
-     # Example #
-     ```
-     cell.type = .project
-     cell.project = projects[indexPath.item]
-     
-     cell.showInfoProject()
-     ```
-     */
-    
-    
-//    func showPackage() {
-//}
-    
+ 
     // MARK: Auxiliar
     
     func addImageToView(imageURL: URL, imageView: UIImageView) {
@@ -184,10 +238,8 @@ class CardCell: UICollectionViewCell {
     @IBAction func saveButton(_ sender: Any) {
         
             isFlagged = !isFlagged
-            
-            switch type {
-            case .package:
-                switch isFlagged {
+        
+            switch isFlagged {
                 case true:
                     //coloca nos fav
                    favoriteButton.isSelected = true
@@ -195,18 +247,8 @@ class CardCell: UICollectionViewCell {
                     //tira dos fav
                     favoriteButton.isSelected = false
                 }
-                
-            case .hotel:
-                switch isFlagged {
-                case true:
-                    //coloca nos fav
-                    favoriteButton.isSelected = true
-                case false:
-                    //tira dos fav
-                    favoriteButton.isSelected = false
-                }
+
         }
-        
-    }
+    
 
 }

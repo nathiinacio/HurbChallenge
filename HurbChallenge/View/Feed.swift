@@ -84,17 +84,18 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     // MARK: Readed JSON
     
     func readedData(result: Hotel) {
-        popula(hoteis: result)
+        collectionViewFeed.reloadData()
+        activityView.stopAnimating()
     }
     
-    func popula(hoteis: Hotel) {
-        // aq vc coloca as coisa na celula
-        // para acessar os hoteis:
-        //        result.results[indice]
-        //        oq for um [] tem q fazer um for ali dentro tb com o indice = count -1 :)
-        
-        // nao esquece de fazer um reload na tableview
-    }
+//    func popula(hoteis: Hotel) {
+//        // aq vc coloca as coisa na celula
+//        // para acessar os hoteis:
+//        //        result.results[indice]
+//        //        oq for um [] tem q fazer um for ali dentro tb com o indice = count -1 :)
+//
+//        // nao esquece de fazer um reload na tableview
+//    }
     
     
     // MARK: CollectionView configuration
@@ -109,10 +110,13 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCell
-        
-//        feedCell.type = .project
-//        feedCell.project = projects[indexPath.item]
-//        feedCell.showInfoProject()
+//        
+//        if currentSegment == 1 {
+//            feedCell.populateCard(indice: indexPath.row)
+//        } else {
+//           feedCell.populateCard(indice: indexPath.row)
+//        }
+        feedCell.populateCard(index: indexPath.row)
         
         return feedCell
     }
@@ -130,8 +134,6 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
         collectionViewFeed.allowsSelection = false
         collectionViewFeed.isUserInteractionEnabled = true
         collectionViewFeed.register(nib, forCellWithReuseIdentifier: "CardCell")
-        
-        activityView.stopAnimating()
         
     }
     
