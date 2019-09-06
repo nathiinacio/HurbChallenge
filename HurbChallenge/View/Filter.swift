@@ -12,13 +12,20 @@ class Filter: UIViewController{
     
     // MARK: - Variables
     var isMarked: Bool = false
-
+    
+    
+    // MARK: - Outlets
     @IBOutlet weak var valueButton1: UIButton!
     @IBOutlet weak var valueButton2: UIButton!
     @IBOutlet weak var valueButton3: UIButton!
     @IBOutlet weak var valueButton4: UIButton!
     @IBOutlet weak var valueButton5: UIButton!
     
+    @IBOutlet weak var amenityButton1: UIButton!
+    @IBOutlet weak var amenityButton2: UIButton!
+    @IBOutlet weak var amenityButton3: UIButton!
+    @IBOutlet weak var amenityButton4: UIButton!
+    @IBOutlet weak var amenityButton5: UIButton!
     
     override func viewDidLoad() {
         
@@ -27,6 +34,11 @@ class Filter: UIViewController{
         showFilterButton(filterButton: valueButton3)
         showFilterButton(filterButton: valueButton4)
         showFilterButton(filterButton: valueButton5)
+        showFilterButton(filterButton: amenityButton1)
+        showFilterButton(filterButton: amenityButton2)
+        showFilterButton(filterButton: amenityButton3)
+        showFilterButton(filterButton: amenityButton4)
+        showFilterButton(filterButton: amenityButton5)
 
     }
     
@@ -66,6 +78,12 @@ class Filter: UIViewController{
     @IBAction func closeButton(_ sender: Any) {
         dismiss()
     }
+    
+    
+    @IBAction func searchButton(_ sender: Any) {
+        
+    }
+    
     
     
     @IBAction func category1Button(_ sender: Any) {

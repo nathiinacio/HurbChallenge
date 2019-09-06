@@ -14,8 +14,6 @@ class Login: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var login: UIView!
-    
     @IBOutlet weak var loginButton: UIButton!
     
     
@@ -23,14 +21,7 @@ class Login: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        // View shadows and colors
-        login.backgroundColor = UIColor.paletteLightGray
-        login.layer.shadowOffset = CGSize(width: 0, height: 0)
-        login.layer.shadowColor = UIColor.black.cgColor
-        login.layer.shadowOpacity = 0.5
-        login.layer.shadowRadius = 8
-        login.layer.cornerRadius = 12
+
         
         showLoginButton(button: loginButton)
         
