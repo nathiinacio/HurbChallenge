@@ -69,7 +69,7 @@ class CardCell: UICollectionViewCell {
         photo.clipsToBounds = true
         
         
-        // Flag image
+        // Favorite image
         let imageSelected = UIImage(named: "favoriteSelected")
         favoriteButton.setImage(imageSelected, for: .selected)
 
@@ -84,6 +84,20 @@ class CardCell: UICollectionViewCell {
         // Enable flag and view iteractions
         favoriteButton.isUserInteractionEnabled = true
         view.isUserInteractionEnabled = true
+        
+        //Ameneties rounded corners
+        amenity1.layer.cornerRadius = 10
+        amenity1.clipsToBounds = true
+        amenity1.layer.masksToBounds = true
+        
+        amenity2.layer.cornerRadius = 10
+        amenity2.clipsToBounds = true
+        amenity2.layer.masksToBounds = true
+        
+        amenity3.layer.cornerRadius = 10
+        amenity3.clipsToBounds = true
+        amenity3.layer.masksToBounds = true
+        
     }
     
     override func prepareForReuse() {
