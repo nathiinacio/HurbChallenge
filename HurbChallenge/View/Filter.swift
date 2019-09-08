@@ -381,9 +381,19 @@ class Filter: UIViewController{
     }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "feedScreen" {
+            debugPrint("go to Filter")
+            if let destinationVC = segue.destination as? Feed {
+                destinationVC.isFiltering = true
+            }
+        }
+    }
+    
+    
     @IBAction func searchButton(_ sender: Any) {
         
-        
+         self.performSegue(withIdentifier: "feedScreen", sender: nil)
         
     }
     

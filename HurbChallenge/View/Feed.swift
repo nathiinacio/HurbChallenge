@@ -52,7 +52,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
         searchButton.isEnabled = false
         
         //Serch Field Target
-        searchField.addTarget(self, action: #selector(searchTapped), for: .allEvents)
+        searchField.addTarget(self, action: #selector(searchTaped), for: .allEvents)
 
         //Segmented control customization
         segmentedControl = CustomSegmentedContrl.init(frame: CGRect.init(x: 0, y: 440, width: self.view.frame.width, height: 45))
@@ -135,7 +135,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     
     
     // MARK: Auxiliar
-    @objc func searchTapped(sender: UITextField!) {
+    @objc func searchTaped(sender: UITextField!) {
         if searchField.text != nil && searchField.text != ""{
             
             searchButton.alpha = 1
