@@ -11,6 +11,8 @@ import UIKit
 class Filter: UIViewController{
     
     // MARK: - Variables
+    var isHotelFilter: Bool = true
+
     var category1isSelected: Bool = false
     var category2isSelected: Bool = false
     var category3isSelected: Bool = false
@@ -32,6 +34,10 @@ class Filter: UIViewController{
     @IBOutlet weak var search: UIButton!
     
     // MARK: - Outlets
+    @IBOutlet weak var viewCategoryEnable: UIView!
+    
+    @IBOutlet weak var labelCategoryEnable: UILabel!
+    
     @IBOutlet weak var categoryButton1: UIButton!
     @IBOutlet weak var categoryButton2: UIButton!
     @IBOutlet weak var categoryButton3: UIButton!
@@ -63,10 +69,36 @@ class Filter: UIViewController{
         showFilterButton(filterButton: amenityButton4)
         showFilterButton(filterButton: amenityButton5)
         checkSearchButtonStatus()
+        showCategoryButtons(currentSegment: isHotelFilter)
     }
     
     
     // MARK: Auxiliar
+    
+    
+    
+    func showCategoryButtons(currentSegment: Bool){
+        
+        if isHotelFilter == true{
+            viewCategoryEnable.alpha = 0
+            labelCategoryEnable.alpha = 0
+            categoryButton1.isEnabled = true
+            categoryButton2.isEnabled = true
+            categoryButton3.isEnabled = true
+            categoryButton4.isEnabled = true
+            categoryButton5.isEnabled = true
+        }else{
+            viewCategoryEnable.alpha = 0.8
+            labelCategoryEnable.alpha = 1
+            categoryButton1.isEnabled = false
+            categoryButton2.isEnabled = false
+            categoryButton3.isEnabled = false
+            categoryButton4.isEnabled = false
+            categoryButton5.isEnabled = false
+        }
+        
+    }
+    
     func showFilterButton(filterButton: UIButton) {
         
             filterButton.layer.cornerRadius = 15

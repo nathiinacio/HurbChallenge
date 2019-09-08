@@ -47,7 +47,9 @@ class CardCell: UICollectionViewCell {
     
     //var user: Auth.auth().currentUser? = nil
     var place: Hotel? = nil
- 
+    var allHotels: [Hotel] = []
+    var allPackages: [Hotel] = []
+
     var isFlagged: Bool = false
     
     var starsCount = 0
@@ -107,14 +109,15 @@ class CardCell: UICollectionViewCell {
     
     // MARK: Cell population
     
-    func populateCard(index:Int) {
-        
+    func populateHotel(index:Int) {
         
             let hotel = place
    
             let currentHotel = hotel?.results[index]
         
             if currentHotel?.isHotel == true {
+                
+                allHotels.append(hotel!)
             
                 // Description
                 definition.text = currentHotel?.smallDescription
@@ -184,10 +187,18 @@ class CardCell: UICollectionViewCell {
 //                }
 //            }
 
-        }
+            }
+    }
+    
+    func populatePackage(index:Int) {
         
+        let hotel = place
+        
+        let currentHotel = hotel?.results[index]
         
         if currentHotel?.isPackage == true {
+        
+            allPackages.append(hotel!)
             
             // Description
             definition.text = currentHotel?.smallDescription
@@ -216,31 +227,29 @@ class CardCell: UICollectionViewCell {
             category4.alpha = 0
             category5.alpha = 0
             
-//            // Image
-//            if let path = user.fields.image?.first?.url {
-//                if let url = URL(string: path) {
-//                    addImageToView(imageURL: url, imageView: photo)
-//                }
-//            }
-
+            //            // Image
+            //            if let path = user.fields.image?.first?.url {
+            //                if let url = URL(string: path) {
+            //                    addImageToView(imageURL: url, imageView: photo)
+            //                }
+            //            }
+            
         }
-
-//            // Checking if the flag is selected or not
-//            if let favorites = MyUser.instance.fields.favoritesUsers,
-//                favorites.contains(where: { u in if u.id == user.id { return true } else { return false } }) {
-//                flagButton.imageView?.image = UIImage(named: "SaveFlagSelected")
-//                isFlagged = true
-//                flagButton.isSelected = true
-//            } else {
-//                flagButton.imageView?.image = UIImage(named: "SaveFlag")
-//                isFlagged = false
-//                flagButton.isSelected = false
-//            }
-
+        
+        //            // Checking if the flag is selected or not
+        //            if let favorites = MyUser.instance.fields.favoritesUsers,
+        //                favorites.contains(where: { u in if u.id == user.id { return true } else { return false } }) {
+        //                flagButton.imageView?.image = UIImage(named: "SaveFlagSelected")
+        //                isFlagged = true
+        //                flagButton.isSelected = true
+        //            } else {
+        //                flagButton.imageView?.image = UIImage(named: "SaveFlag")
+        //                isFlagged = false
+        //                flagButton.isSelected = false
+        //            }
         
     }
     
- 
     // MARK: Auxiliar
     
     func addImageToView(imageURL: URL, imageView: UIImageView) {

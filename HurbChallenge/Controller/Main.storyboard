@@ -194,7 +194,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vai pra onde?" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xge-nr-qM6">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Busque pelo nome ou cidade" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xge-nr-qM6">
                                 <rect key="frame" x="52" y="54" width="258" height="30"/>
                                 <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -218,7 +218,23 @@
                                 <state key="normal" title="Button" image="filterIcon"/>
                                 <connections>
                                     <action selector="filterButton:" destination="bHI-VD-5Hw" eventType="touchUpInside" id="vU2-Fh-nta"/>
-                                    <segue destination="sSZ-63-JzE" kind="show" id="gOl-jj-pjI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84R-vE-RqL">
+                                <rect key="frame" x="133" y="92" width="96" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.40000000000000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Buscar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="searchButton:" destination="sSZ-63-JzE" eventType="touchUpInside" id="Uuu-iv-YZR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -242,7 +258,10 @@
                     <tabBarItem key="tabBarItem" title="" image="feedIcon" id="CQD-w7-awO"/>
                     <connections>
                         <outlet property="collectionViewFeed" destination="Moq-qP-S4r" id="2Sg-Ik-gJu"/>
+                        <outlet property="searchButton" destination="84R-vE-RqL" id="TCL-bQ-vIQ"/>
+                        <outlet property="searchField" destination="xge-nr-qM6" id="6xY-fs-Pm5"/>
                         <outlet property="searchLabel" destination="NXY-FI-KN6" id="FwY-T3-ilB"/>
+                        <segue destination="sSZ-63-JzE" kind="show" identifier="filterScreen" id="11J-pc-K6w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uDD-5T-X8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -257,8 +276,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Como deseja filtrar?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xv-My-hoB">
-                                <rect key="frame" x="16" y="85" width="208" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Como deseja buscar?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xv-My-hoB">
+                                <rect key="frame" x="16" y="85" width="225" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <color key="textColor" red="0.23137254900000001" green="0.23921568630000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -520,6 +539,20 @@
                                     <action selector="amenity5Taped:" destination="sSZ-63-JzE" eventType="touchUpInside" id="MGa-8i-MsN"/>
                                 </connections>
                             </button>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MMc-H1-eua">
+                                <rect key="frame" x="-1" y="127" width="376" height="153"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Não é possivel buscar pacotes pela categoria." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0J-wS-psV">
+                                        <rect key="frame" x="40" y="61" width="297" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="EXY-cI-Znr"/>
@@ -535,12 +568,14 @@
                         <outlet property="categoryButton3" destination="R1z-ML-hhW" id="EpC-bi-Nnd"/>
                         <outlet property="categoryButton4" destination="xly-3D-lhV" id="XZJ-z9-DCe"/>
                         <outlet property="categoryButton5" destination="fT3-Y6-MRB" id="HE5-SL-EN3"/>
+                        <outlet property="labelCategoryEnable" destination="G0J-wS-psV" id="dTv-HX-bX9"/>
                         <outlet property="search" destination="OMF-rL-U74" id="cPh-5j-g0c"/>
                         <outlet property="valueButton1" destination="jsk-Kr-r2f" id="Ewv-Rd-VHb"/>
                         <outlet property="valueButton2" destination="MZD-Gn-cA3" id="tYc-0C-T3l"/>
                         <outlet property="valueButton3" destination="Kbl-20-oka" id="SU7-dF-4Nb"/>
                         <outlet property="valueButton4" destination="mNd-c4-YU9" id="zXy-vO-JFn"/>
                         <outlet property="valueButton5" destination="IcH-zr-mRQ" id="pmP-oX-0ny"/>
+                        <outlet property="viewCategoryEnable" destination="MMc-H1-eua" id="B8F-pe-YCs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fJ-M7-ajI" userLabel="First Responder" sceneMemberID="firstResponder"/>

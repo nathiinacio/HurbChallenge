@@ -19,20 +19,22 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     
     @IBOutlet weak var searchLabel: UILabel!
     
+    @IBOutlet weak var searchField: UITextField!
+    
+    @IBOutlet weak var searchButton: UIButton!
     
     // MARK: Variables
     
      private let refreshControl = UIRefreshControl()
-    
      var activityView:UIActivityIndicatorView!
-    
      var segmentedControl: CustomSegmentedContrl!
-    var currentSegment:Int = 0
+     var currentSegment:Int = 0
+     var isFiltering:Bool = false
     
     /// The hotels or packages to appear in the collection view.
     
-    // var hotels: [Hotel] = []
-    // var packages: [Hotel] = []
+     var hotels: [Hotel] = []
+     var packages: [Hotel] = []
 
     // MARK: - Methods
     
@@ -40,10 +42,17 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     
     override func viewDidLoad() {
         
-        // Search bar rounded corners
+        //Search bar rounded corners
         searchLabel.layer.cornerRadius = 15
         searchLabel.clipsToBounds = true
         searchLabel.layer.masksToBounds = true
+        
+        //Search Button alpha
+        searchButton.alpha = 0
+        searchButton.isEnabled = false
+        
+        //Serch Field Target
+        searchField.addTarget(self, action: #selector(searchTapped), for: .allEvents)
 
         //Segmented control customization
         segmentedControl = CustomSegmentedContrl.init(frame: CGRect.init(x: 0, y: 440, width: self.view.frame.width, height: 45))
@@ -110,13 +119,15 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCell
-//        
-//        if currentSegment == 1 {
-//            feedCell.populateCard(indice: indexPath.row)
-//        } else {
-//           feedCell.populateCard(indice: indexPath.row)
-//        }
-        feedCell.populateCard(index: indexPath.row)
+
+        if currentSegment == 0 {
+            feedCell.populateHotel(index: indexPath.row)
+        } else {
+           // feedCell.populatePackage(index: indexPath.row)
+            
+        }
+        
+//        feedCell.populateCard(index: indexPath.row)
         
         return feedCell
     }
@@ -124,6 +135,19 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     
     
     // MARK: Auxiliar
+    @objc func searchTapped(sender: UITextField!) {
+        if searchField.text != nil && searchField.text != ""{
+            
+            searchButton.alpha = 1
+            searchButton.isEnabled = true
+            
+        }else{
+            searchButton.alpha = 0
+            searchButton.isEnabled = false
+        }
+    }
+    
+    
     func setUpCollectionView() {
         
         let nib = UINib.init(nibName: "CardCell", bundle: nil)
@@ -159,12 +183,35 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
         return CGSize(width: 357, height: 297)
 }
 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "filterScreen" {
+            debugPrint("go to Filter")
+            if let destinationVC = segue.destination as? Filter {
+                
+                if currentSegment == 0 {
+                    
+                    destinationVC.isHotelFilter = true
+                    
+                }else{
+                     destinationVC.isHotelFilter = false
+                    
+                }
+               
+            }
+        }
+    }
+    
+    
 // MARK: Actions
     
     @IBAction func filterButton(_ sender: Any) {
         
-        
+         self.performSegue(withIdentifier: "filterScreen", sender: nil)
+                
     }
+    
+    
     
     
 }
