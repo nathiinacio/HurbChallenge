@@ -53,6 +53,9 @@
                                 <state key="normal" title="Entrar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginTaped:" destination="mY9-e1-hdK" eventType="touchUpInside" id="bfr-co-x2a"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bi8-mw-wgO">
                                 <rect key="frame" x="133" y="714" width="109" height="27"/>
@@ -61,6 +64,9 @@
                                 <state key="normal" title="Esqueceu a senha?">
                                     <color key="titleColor" red="0.23137254901960785" green="0.23921568627450979" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="forgotPassword:" destination="mY9-e1-hdK" eventType="touchUpInside" id="Y7f-0l-7gY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLv-UE-6Ym">
                                 <rect key="frame" x="21" y="455" width="45" height="28"/>
@@ -105,8 +111,10 @@
                         <viewLayoutGuide key="safeArea" id="Ng9-UI-Zuo"/>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="Xrp-YI-gDl" id="sWg-iE-efX"/>
                         <outlet property="loginButton" destination="0H7-bd-r5Q" id="JtS-Z8-JLR"/>
-                        <segue destination="TSv-W2-moB" kind="show" identifier="gotoMain" id="cPX-38-eDx"/>
+                        <outlet property="passwordTextField" destination="S1f-40-Ccz" id="uPn-PP-ty8"/>
+                        <segue destination="TSv-W2-moB" kind="show" identifier="goToMain" id="cPX-38-eDx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5q-Ui-Z6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -16,6 +16,10 @@
 		E2B2CCC5231CB2C000B951FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B2CCC4231CB2C000B951FE /* LaunchScreen.storyboard */; };
 		E2B2CCC8231CB77D00B951FE /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B2CCC7231CB77D00B951FE /* Login.storyboard */; };
 		E2B2CCCC231CB96100B951FE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B2CCCB231CB96100B951FE /* Login.swift */; };
+		E2C80ED02325A781008753E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2C80ECF2325A781008753E3 /* GoogleService-Info.plist */; };
+		E2C80ED22325B1BA008753E3 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C80ED12325B1BA008753E3 /* Firebase.swift */; };
+		E2C80ED42325B1E5008753E3 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C80ED32325B1E5008753E3 /* UserManager.swift */; };
+		E2C80ED62325B226008753E3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C80ED52325B225008753E3 /* AppSettings.swift */; };
 		E2FA24772320884C0049AF03 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA24602320884C0049AF03 /* Price.swift */; };
 		E2FA24782320884C0049AF03 /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA24612320884C0049AF03 /* Hotel.swift */; };
 		E2FA24792320884C0049AF03 /* Adress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA24622320884C0049AF03 /* Adress.swift */; };
@@ -39,9 +43,13 @@
 		E2FA24982321E1C40049AF03 /* CustomSegmentedContrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA24972321E1C40049AF03 /* CustomSegmentedContrl.swift */; };
 		E2FA249A2321FAA10049AF03 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA24992321FAA10049AF03 /* Profile.swift */; };
 		E2FA249C232209560049AF03 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA249B232209560049AF03 /* Filter.swift */; };
+		ED78A4B0E5C3AE79DDFC1A83 /* Pods_HurbChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570966ABF884068E6B57C7AA /* Pods_HurbChallenge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00F5AE5837862528F1672A10 /* Pods-HurbChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HurbChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-HurbChallenge/Pods-HurbChallenge.release.xcconfig"; sourceTree = "<group>"; };
+		570966ABF884068E6B57C7AA /* Pods_HurbChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HurbChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA429AF85494889F7A6EAB07 /* Pods-HurbChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HurbChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HurbChallenge/Pods-HurbChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		E2B2CC78231CA42000B951FE /* HurbChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HurbChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B2CC7B231CA42000B951FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2B2CC82231CA42000B951FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +61,10 @@
 		E2B2CCC4231CB2C000B951FE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2B2CCC7231CB77D00B951FE /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E2B2CCCB231CB96100B951FE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		E2C80ECF2325A781008753E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E2C80ED12325B1BA008753E3 /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		E2C80ED32325B1E5008753E3 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		E2C80ED52325B225008753E3 /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		E2FA24602320884C0049AF03 /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		E2FA24612320884C0049AF03 /* Hotel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
 		E2FA24622320884C0049AF03 /* Adress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adress.swift; sourceTree = "<group>"; };
@@ -83,18 +95,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED78A4B0E5C3AE79DDFC1A83 /* Pods_HurbChallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8868AD008E2D0E80063C5962 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				570966ABF884068E6B57C7AA /* Pods_HurbChallenge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8F7024CF03891C4CE732DD63 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA429AF85494889F7A6EAB07 /* Pods-HurbChallenge.debug.xcconfig */,
+				00F5AE5837862528F1672A10 /* Pods-HurbChallenge.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E2B2CC6F231CA41F00B951FE = {
 			isa = PBXGroup;
 			children = (
 				E2B2CC7A231CA42000B951FE /* HurbChallenge */,
 				E2B2CC82231CA42000B951FE /* Assets.xcassets */,
 				E2B2CC79231CA42000B951FE /* Products */,
+				8F7024CF03891C4CE732DD63 /* Pods */,
+				8868AD008E2D0E80063C5962 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +182,7 @@
 		E2B2CCC6231CB37900B951FE /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				E2C80ECF2325A781008753E3 /* GoogleService-Info.plist */,
 				E2B2CC87231CA42000B951FE /* Info.plist */,
 			);
 			path = SupportingFiles;
@@ -173,6 +206,9 @@
 				E2FA24722320884C0049AF03 /* Filters.swift */,
 				E2FA24742320884C0049AF03 /* QuantityDescriptors.swift */,
 				E2FA24972321E1C40049AF03 /* CustomSegmentedContrl.swift */,
+				E2C80ED12325B1BA008753E3 /* Firebase.swift */,
+				E2C80ED32325B1E5008753E3 /* UserManager.swift */,
+				E2C80ED52325B225008753E3 /* AppSettings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,9 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2B2CC8A231CA42000B951FE /* Build configuration list for PBXNativeTarget "HurbChallenge" */;
 			buildPhases = (
+				B358551E9889678906A87403 /* [CP] Check Pods Manifest.lock */,
 				E2B2CC74231CA41F00B951FE /* Sources */,
 				E2B2CC75231CA41F00B951FE /* Frameworks */,
 				E2B2CC76231CA41F00B951FE /* Resources */,
+				D8AB5B107BE966E837C224C4 /* [CP] Embed Pods Frameworks */,
+				D2CD30984EF829D849C15CA0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,6 +284,7 @@
 			files = (
 				E2B2CCC1231CB11000B951FE /* SplashScreen.storyboard in Resources */,
 				E2FA249023218C1E0049AF03 /* Main.storyboard in Resources */,
+				E2C80ED02325A781008753E3 /* GoogleService-Info.plist in Resources */,
 				E2FA248E232183EA0049AF03 /* NewAccount.storyboard in Resources */,
 				E2B2CCC5231CB2C000B951FE /* LaunchScreen.storyboard in Resources */,
 				E2B2CC83231CA42000B951FE /* Assets.xcassets in Resources */,
@@ -256,6 +296,89 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B358551E9889678906A87403 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HurbChallenge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2CD30984EF829D849C15CA0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HurbChallenge/Pods-HurbChallenge-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HurbChallenge/Pods-HurbChallenge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8AB5B107BE966E837C224C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HurbChallenge/Pods-HurbChallenge-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HurbChallenge/Pods-HurbChallenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E2B2CC74231CA41F00B951FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -266,6 +389,7 @@
 				E2FA24792320884C0049AF03 /* Adress.swift in Sources */,
 				E2FA249A2321FAA10049AF03 /* Profile.swift in Sources */,
 				E2FA24882320884C0049AF03 /* DAO.swift in Sources */,
+				E2C80ED22325B1BA008753E3 /* Firebase.swift in Sources */,
 				E2B2CCBD231CB0F900B951FE /* SplashScreen.swift in Sources */,
 				E2FA24892320884C0049AF03 /* QuantityDescriptors.swift in Sources */,
 				E2FA247F2320884C0049AF03 /* Amenity.swift in Sources */,
@@ -276,12 +400,14 @@
 				E2FA247B2320884C0049AF03 /* Result.swift in Sources */,
 				E2FA249C232209560049AF03 /* Filter.swift in Sources */,
 				E2B2CC7C231CA42000B951FE /* AppDelegate.swift in Sources */,
+				E2C80ED42325B1E5008753E3 /* UserManager.swift in Sources */,
 				E2FA24822320884C0049AF03 /* Extensions.swift in Sources */,
 				E2FA24872320884C0049AF03 /* Filters.swift in Sources */,
 				E2FA24942321CECE0049AF03 /* CardCell.swift in Sources */,
 				E2FA24802320884C0049AF03 /* Pagination.swift in Sources */,
 				E2FA24862320884C0049AF03 /* Gallery.swift in Sources */,
 				E2B2CCCC231CB96100B951FE /* Login.swift in Sources */,
+				E2C80ED62325B226008753E3 /* AppSettings.swift in Sources */,
 				E2FA24812320884C0049AF03 /* ResultPrice.swift in Sources */,
 				E2FA24782320884C0049AF03 /* Hotel.swift in Sources */,
 				E2FA248C232183DB0049AF03 /* CreateNewAccount.swift in Sources */,
@@ -409,6 +535,7 @@
 		};
 		E2B2CC8B231CA42000B951FE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA429AF85494889F7A6EAB07 /* Pods-HurbChallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -427,6 +554,7 @@
 		};
 		E2B2CC8C231CA42000B951FE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00F5AE5837862528F1672A10 /* Pods-HurbChallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

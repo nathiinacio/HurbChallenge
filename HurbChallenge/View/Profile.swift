@@ -7,12 +7,12 @@
 //
 
 import UIKit
-
+import Firebase
 
 class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var profileCollectionView: UICollectionView!
-    
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var favoriteLabel: UILabel!
     
     // MARK: Variables
@@ -61,12 +61,15 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
         view.addSubview(activityView)
         activityView.startAnimating()
         
+        Auth.auth().currentUser?.reload()
         profileCollectionView.reloadData()
         setUpCollectionView()
         
-        
-     
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        nameLabel.text = AppSettings.displayName
+       
     }
     
     
@@ -139,13 +142,13 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
         
         let ok = UIAlertAction(title: "Sim, desejo sair", style: .default, handler: { (action) -> Void in
             
-//            UserManager.instance.signOut(completion: { (error) in
-//                if error != nil {
-//                    debugPrint(#function, String(describing: error?.localizedDescription))
-//                } else {
-//                    self.performSegue(withIdentifier: "main", sender: self)
-//                }
-//            })
+            UserManager.instance.signOut(completion: { (error) in
+                if error != nil {
+                    debugPrint(#function, String(describing: error?.localizedDescription))
+                } else {
+                    self.performSegue(withIdentifier: "goToStart", sender: self)
+                }
+            })
             
         })
         

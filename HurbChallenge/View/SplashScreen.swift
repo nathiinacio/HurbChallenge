@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Firebase
+import Firebase
 
 class SplashScreen: UIViewController {
     
@@ -24,19 +24,15 @@ class SplashScreen: UIViewController {
     
     // MARK: View Cicle
     override func viewDidAppear(_ animated: Bool) {
-        
-        self.animate()
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(SplashScreen.passScreen)), userInfo: nil, repeats: false)
-        
-        
-       // Auth.auth().addStateDidChangeListener { auth, user in
-          //  if user != nil {
-          //      self.performSegue(withIdentifier: "profile", sender: self)
-          //  } else {
-           //     self.animate()
-           //     Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(SplashScreen.passScreen)), userInfo: nil, repeats: false)
-          //  }
-        //}
+
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "goToMain", sender: self)
+            } else {
+                self.animate()
+                Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(SplashScreen.passScreen)), userInfo: nil, repeats: false)
+            }
+        }
     }
     
     

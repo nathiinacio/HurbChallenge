@@ -74,7 +74,7 @@
                                 <rect key="frame" x="36" y="669" width="303" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30L-po-EVg">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30L-po-EVg">
                                 <rect key="frame" x="80" y="710" width="215" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.40000000000000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -82,8 +82,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="confirmButton:" destination="YW5-R9-f6p" eventType="touchUpInside" id="D0q-xU-jGG"/>
-                                    <segue destination="3dp-bA-XYa" kind="show" id="ykM-cU-hur"/>
+                                    <action selector="confirmButton:" destination="YW5-R9-f6p" eventType="touchUpInside" id="bmp-fz-oEP"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="emailLightIcon" translatesAutoresizingMaskIntoConstraints="NO" id="AWV-VG-SMA">
@@ -115,7 +114,12 @@
                         <viewLayoutGuide key="safeArea" id="qu3-dd-Bxs"/>
                     </view>
                     <connections>
-                        <outlet property="confirmButton" destination="30L-po-EVg" id="STV-N6-kS4"/>
+                        <outlet property="createNewAccountButton" destination="30L-po-EVg" id="KzH-eB-rxa"/>
+                        <outlet property="emailTextField" destination="MbT-u3-gae" id="10J-id-Qn3"/>
+                        <outlet property="nameTextField" destination="qcB-fF-kYb" id="XBc-lF-kQ6"/>
+                        <outlet property="passwordConfirmationTextField" destination="5Xo-Aa-ZrM" id="sLI-DT-odZ"/>
+                        <outlet property="passwordTextField" destination="VvM-pz-PET" id="1WM-0L-6aw"/>
+                        <segue destination="3dp-bA-XYa" kind="show" identifier="thankScreen" id="eLL-DI-Gok"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="63u-Db-U87" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,6 +164,9 @@
                                         <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="WR5-az-ZKz" kind="show" id="6HK-Oh-EFG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.38431372549019605" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
@@ -173,9 +180,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DsL-DY-dzG"/>
                     </view>
-                    <connections>
-                        <segue destination="WR5-az-ZKz" kind="show" identifier="gotoMain" id="t30-hg-huh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gna-ao-A5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

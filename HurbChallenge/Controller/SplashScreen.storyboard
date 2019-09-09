@@ -46,11 +46,20 @@
                         <outlet property="splashImage" destination="Raa-1C-V3k" id="OSF-gp-vCi"/>
                         <outlet property="splashView" destination="AyU-iS-QKU" id="52i-Ph-kYe"/>
                         <segue destination="1N6-5B-4yK" kind="presentation" identifier="goToStart" animates="NO" id="hLT-xv-pwa"/>
+                        <segue destination="XQO-sU-XzM" kind="show" identifier="goToMain" id="3gx-dd-5SL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UlL-W6-xUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-288.40579710144931" y="162.72321428571428"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="5zY-15-N8t">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="XQO-sU-XzM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mPX-C4-dNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="375" y="76"/>
         </scene>
         <!--Start-->
         <scene sceneID="bzm-jS-99X">
