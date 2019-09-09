@@ -145,16 +145,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thankyouImage" translatesAutoresizingMaskIntoConstraints="NO" id="0rp-9G-dzH">
                                 <rect key="frame" x="24" y="94" width="328" height="542"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="328" id="CV0-ee-jNf"/>
-                                    <constraint firstAttribute="height" constant="542" id="PBJ-v4-Zsx"/>
+                                    <constraint firstAttribute="height" constant="542" id="b6D-n7-vvn"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Osv-Lh-wc9">
-                                <rect key="frame" x="80" y="666" width="215" height="50"/>
+                                <rect key="frame" x="80" y="708" width="215" height="50"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.40000000000000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="CVJ-zk-n4g"/>
-                                    <constraint firstAttribute="width" constant="215" id="thy-Ew-hd1"/>
+                                    <constraint firstAttribute="width" secondItem="Osv-Lh-wc9" secondAttribute="height" multiplier="43:10" id="gAa-Ft-fZi"/>
                                 </constraints>
                                 <state key="normal" title="Começar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -171,12 +169,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.38431372549019605" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="DsL-DY-dzG" firstAttribute="bottom" secondItem="Osv-Lh-wc9" secondAttribute="bottom" constant="62" id="6ey-hz-em8"/>
-                            <constraint firstItem="0rp-9G-dzH" firstAttribute="top" secondItem="DsL-DY-dzG" secondAttribute="top" constant="50" id="LQh-8Y-2bM"/>
-                            <constraint firstItem="DsL-DY-dzG" firstAttribute="trailing" secondItem="0rp-9G-dzH" secondAttribute="trailing" constant="23" id="ft3-yq-M64"/>
-                            <constraint firstItem="0rp-9G-dzH" firstAttribute="leading" secondItem="DsL-DY-dzG" secondAttribute="leading" constant="24" id="gZD-NB-q3k"/>
-                            <constraint firstItem="Osv-Lh-wc9" firstAttribute="leading" secondItem="DsL-DY-dzG" secondAttribute="leading" constant="80" id="mgO-qx-Mpw"/>
-                            <constraint firstItem="DsL-DY-dzG" firstAttribute="trailing" secondItem="Osv-Lh-wc9" secondAttribute="trailing" constant="80" id="pTm-Ed-60J"/>
+                            <constraint firstItem="DsL-DY-dzG" firstAttribute="bottom" secondItem="Osv-Lh-wc9" secondAttribute="bottom" constant="20" id="1T1-iU-FqL"/>
+                            <constraint firstItem="DsL-DY-dzG" firstAttribute="trailing" secondItem="0rp-9G-dzH" secondAttribute="trailing" constant="23" id="JQk-hu-YoH"/>
+                            <constraint firstItem="Osv-Lh-wc9" firstAttribute="leading" secondItem="DsL-DY-dzG" secondAttribute="leading" constant="80" id="PUy-ct-65g"/>
+                            <constraint firstItem="0rp-9G-dzH" firstAttribute="leading" secondItem="DsL-DY-dzG" secondAttribute="leading" constant="24" id="aKd-Ns-pCm"/>
+                            <constraint firstItem="0rp-9G-dzH" firstAttribute="top" secondItem="DsL-DY-dzG" secondAttribute="top" constant="50" id="cIT-Eq-paH"/>
+                            <constraint firstItem="DsL-DY-dzG" firstAttribute="trailing" secondItem="Osv-Lh-wc9" secondAttribute="trailing" constant="80" id="yFH-UC-jQC"/>
+                            <constraint firstItem="Osv-Lh-wc9" firstAttribute="centerX" secondItem="ugH-CJ-mno" secondAttribute="centerX" id="yWt-hi-hZ6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DsL-DY-dzG"/>
                     </view>

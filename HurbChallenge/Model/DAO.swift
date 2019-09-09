@@ -18,7 +18,7 @@ class DAO {
     private init() {}
     
     func jsonReader(page:Int, requester: Requester, on view: UIViewController) {
-        let url = "https://www.hurb.com/search/api?q=gramado&page=\(String(page))"
+        let url = "https://www.hurb.com/search/api?q=buzios&page=\(String(page))"
         let urlObj = URL(string: url)
         URLSession.shared.dataTask(with: urlObj!) { (data, response, error) in
             do {
