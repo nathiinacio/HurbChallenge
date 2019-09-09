@@ -26,6 +26,8 @@ class Login: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+        
         showLoginButton(button: loginButton)
         activityView = UIActivityIndicatorView(style: .gray)
         activityView.color = UIColor.white
@@ -46,8 +48,6 @@ class Login: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         emailTextField.becomeFirstResponder()
-        //NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillAppear), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,10 +64,10 @@ class Login: UIViewController {
     }
     
     @objc func keyboardWillAppear(notification: NSNotification){
-        
+
         let info = notification.userInfo!
         let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        
+
         loginButton.center = CGPoint(x: view.center.x,
                                      y: view.frame.height - keyboardFrame.height - 16.0 - loginButton.frame.height / 2)
         activityView.center = self.loginButton.center

@@ -24,8 +24,9 @@ class CardCell: UICollectionViewCell {
     
     @IBOutlet weak var favoriteButton: UIButton!
     
-    @IBOutlet weak var placeLabel: UILabel!
-    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var stateLabel: UILabel!
+    @IBOutlet weak var priceMoney: UILabel!
     
     @IBOutlet weak var definition: UITextView!
     
@@ -69,7 +70,7 @@ class CardCell: UICollectionViewCell {
         //Rounded Image
         photo.layer.cornerRadius = photo.frame.height/2
         photo.clipsToBounds = true
-        
+
         
         // Favorite image
         let imageSelected = UIImage(named: "favoriteSelected")
@@ -109,116 +110,129 @@ class CardCell: UICollectionViewCell {
     
     // MARK: Cell population
     
-    func populateHotel(index:Int) {
+    func populateHotel(from result:Result) {
         
-            let hotel = place
-   
-            let currentHotel = hotel?.results[index]
         
-            if currentHotel?.isHotel == true {
-                
-                allHotels.append(hotel!)
-            
+            if result.isHotel == true {
+      
                 // Description
-                definition.text = currentHotel?.smallDescription
+                definition.text = result.smallDescription
                 
                 // Amenities
                 
-                isAmenityOrAtribute.text = "Amenidades"
-                amenity1.text = currentHotel?.amenities[0].name
-                amenity2.text = currentHotel?.amenities[1].name
-                amenity3.text = currentHotel?.amenities[2].name
-                
+                isAmenityOrAtribute.text = "Amenidades:"
+                if result.amenities.count >= 3{
+                    amenity1.text = result.amenities[0].name
+                    amenity2.text = result.amenities[1].name
+                    amenity3.text = result.amenities[2].name
+                    
+                } else if result.amenities.count == 2{
+                    //amenity1.text = result.amenities[0].name
+                    amenity2.text = result.amenities[0].name
+                    amenity3.text = result.amenities[1].name
+                } else if result.amenities.count == 1{
+                    //amenity1.text = result.amenities[0].name
+                    amenity2.text = result.amenities[0].name
+                    //amenity3.text = result.amenities[2].name
+                }
+     
                 
                 // Name
-                 title.text = currentHotel?.name
+                 title.text = result.name
                 
                 //Local
                 
-                placeLabel.text = currentHotel?.address.city
+                cityLabel.text = result.address.city
+                stateLabel.text = "| " + result.address.state + " |"
             
                 //Price
-                 price.text = currentHotel?.price.currency
-    
+                 let price = result.price.amountPerDay
+                 let stringValue = "\(price)"
+                priceMoney.text = "BRL " + stringValue
+
                 //Category
-                
-                if currentHotel?.category == "5 estrelas"{
-                    category1.alpha = 1
-                    category2.alpha = 1
-                    category3.alpha = 1
-                    category4.alpha = 1
-                    category5.alpha = 1
-                }else if currentHotel?.category == "4 estrelas"{
-                    category1.alpha = 1
-                    category2.alpha = 1
-                    category3.alpha = 1
-                    category4.alpha = 1
-                    category5.alpha = 0
-                }else if currentHotel?.category == "3 estrelas"{
-                    category1.alpha = 1
-                    category2.alpha = 1
-                    category3.alpha = 1
-                    category4.alpha = 0
-                    category5.alpha = 0
-                }else if currentHotel?.category == "2 estrelas"{
-                    category1.alpha = 1
-                    category2.alpha = 1
-                    category3.alpha = 0
-                    category4.alpha = 0
-                    category5.alpha = 0
-                }else if currentHotel?.category == "1 estrela"{
-                    category1.alpha = 1
-                    category2.alpha = 0
-                    category3.alpha = 0
-                    category4.alpha = 0
-                    category5.alpha = 0
+                if result.stars == 5 {
+                    self.category1.alpha = 1
+                    self.category2.alpha = 1
+                    self.category3.alpha = 1
+                    self.category4.alpha = 1
+                    self.category5.alpha = 1
+                }else if result.stars == 4 {
+                    self.category1.alpha = 1
+                    self.category2.alpha = 1
+                    self.category3.alpha = 1
+                    self.category4.alpha = 1
+                    self.category5.alpha = 0
+                }else if result.stars == 3 {
+                    self.category1.alpha = 1
+                    self.category2.alpha = 1
+                    self.category3.alpha = 1
+                    self.category4.alpha = 0
+                    self.category5.alpha = 0
+                }else if result.stars == 2 {
+                    self.category1.alpha = 1
+                    self.category2.alpha = 1
+                    self.category3.alpha = 0
+                    self.category4.alpha = 0
+                    self.category5.alpha = 0
+                }else if result.stars == 1 {
+                    self.category1.alpha = 1
+                    self.category2.alpha = 0
+                    self.category3.alpha = 0
+                    self.category4.alpha = 0
+                    self.category5.alpha = 0
                 }else{
-                    category1.alpha = 0
-                    category2.alpha = 0
-                    category3.alpha = 0
-                    category4.alpha = 0
-                    category5.alpha = 0
+                    self.category1.alpha = 0
+                    self.category2.alpha = 0
+                    self.category3.alpha = 0
+                    self.category4.alpha = 0
+                    self.category5.alpha = 0
                 }
                 
-//            // Image
-//            if let path = user.fields.image?.first?.url {
-//                if let url = URL(string: path) {
-//                    addImageToView(imageURL: url, imageView: photo)
-//                }
-//            }
+            // Image
+                addImageToView(from: result.url, imageView: photo)
 
             }
     }
     
-    func populatePackage(index:Int) {
+    func populatePackage(from result:Result) {
         
-        let hotel = place
+    
+        if result.isPackage == true {
         
-        let currentHotel = hotel?.results[index]
-        
-        if currentHotel?.isPackage == true {
-        
-            allPackages.append(hotel!)
+            
             
             // Description
-            definition.text = currentHotel?.smallDescription
+            definition.text = result.smallDescription
             
             // Atributes
-            isAmenityOrAtribute.text = "Atributos"
-            amenity1.text = currentHotel?.amenities[0].name
-            amenity2.text = currentHotel?.amenities[1].name
-            amenity3.text = currentHotel?.amenities[2].name
-            
+            isAmenityOrAtribute.text = "Atributos:"
+            if result.amenities.count >= 3{
+                amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[1].name
+                amenity3.text = result.amenities[2].name
+                
+            } else if result.amenities.count == 2{
+                //amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[0].name
+                amenity3.text = result.amenities[1].name
+            } else if result.amenities.count == 1{
+                //amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[0].name
+                //amenity3.text = result.amenities[2].name
+            }
             
             // Name
-            title.text = currentHotel?.name
-            
+            title.text = result.name
+        
             //Local
-            
-            placeLabel.text = currentHotel?.address.city
-            
+            cityLabel.text = result.address.city
+            stateLabel.text = "| " + result.address.state + " |"
+        
             //Price
-            price.text = currentHotel?.price.currency
+            let price = result.price.amountPerDay
+            let stringValue = "\(price)"
+            priceMoney.text = "BRL " + stringValue
             
             //Category
             category1.alpha = 0
@@ -227,12 +241,8 @@ class CardCell: UICollectionViewCell {
             category4.alpha = 0
             category5.alpha = 0
             
-            //            // Image
-            //            if let path = user.fields.image?.first?.url {
-            //                if let url = URL(string: path) {
-            //                    addImageToView(imageURL: url, imageView: photo)
-            //                }
-            //            }
+            //Image
+            addImageToView(from: result.url, imageView: photo)
             
         }
         
@@ -252,7 +262,24 @@ class CardCell: UICollectionViewCell {
     
     // MARK: Auxiliar
     
-    func addImageToView(imageURL: URL, imageView: UIImageView) {
+    func addImageToView(from imageURL: String, imageView: UIImageView) {
+        
+        DispatchQueue.main.async {
+            guard let url = URL(string: imageURL) else {
+                debugPrint("error in image url", #function)
+                return
+            }
+            guard let data = try? Data(contentsOf: url) else {
+                debugPrint("error getting data", #function, url)
+                return
+            }
+            guard let img = UIImage(data: data) else {
+                debugPrint("error in uiimage", #function)
+                return
+            }
+            
+            imageView.image = img
+        }
 
     }
     

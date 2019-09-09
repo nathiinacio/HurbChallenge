@@ -10,6 +10,7 @@ import UIKit
 
 
 class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, Requester {
+    
 
     
     // MARK: - Initialization
@@ -92,48 +93,44 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     
     // MARK: Readed JSON
     
-    func readedData(result: Hotel) {
-        collectionViewFeed.reloadData()
-        activityView.stopAnimating()
+    func readedData(result: [Result]) {
+        DispatchQueue.main.async {
+            self.collectionViewFeed.reloadData()
+            self.activityView.stopAnimating()
+        }
     }
-    
-//    func popula(hoteis: Hotel) {
-//        // aq vc coloca as coisa na celula
-//        // para acessar os hoteis:
-//        //        result.results[indice]
-//        //        oq for um [] tem q fazer um for ali dentro tb com o indice = count -1 :)
-//
-//        // nao esquece de fazer um reload na tableview
-//    }
+
     
     
     // MARK: CollectionView configuration
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if currentSegment == 1 {
-            return 4
+        if currentSegment == 0 {
+            return DAO.instance.readedHotels.count
         } else {
-            return 3
+            return DAO.instance.readedPackages.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCell
-
-        if currentSegment == 0 {
-            feedCell.populateHotel(index: indexPath.row)
-        } else {
-           // feedCell.populatePackage(index: indexPath.row)
-            
+        
+        if !DAO.instance.readedHotels.isEmpty{
+            if currentSegment == 0 {
+                let result = DAO.instance.readedHotels[indexPath.row]
+                feedCell.populateHotel(from: result)
+            } else {
+                let result = DAO.instance.readedPackages[indexPath.row]
+                feedCell.populatePackage(from: result)
+                
+            }
         }
         
-//        feedCell.populateCard(index: indexPath.row)
         
         return feedCell
     }
 
-    
-    
+
     // MARK: Auxiliar
     @objc func searchTaped(sender: UITextField!) {
         if searchField.text != nil && searchField.text != ""{
@@ -180,7 +177,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     
     //cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 357, height: 297)
+        return CGSize(width: 357, height: 441)
 }
 
     

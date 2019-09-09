@@ -14,6 +14,7 @@ struct Result: Codable {
     let isHotel:Bool?
     let name: String
     let url: String
+    let stars: Int?
     let smallDescription, resultDescription: String?
     let gallery: [Gallery]
     let address: Address
@@ -26,7 +27,7 @@ struct Result: Codable {
     let amenities: [Amenity]
     
     enum CodingKeys: String, CodingKey {
-        case sku, isHotel, name, url, smallDescription, isPackage
+        case sku, isHotel, name, url, stars, smallDescription, isPackage
         case resultDescription
         case gallery, address, tags, price, featuredItem, category, quantityDescriptors, id, amenities
     }

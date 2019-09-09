@@ -9,13 +9,16 @@ import Foundation
 import UIKit
 
 protocol Requester {
-    func readedData(result:Hotel)
+    func readedData(result:[Result])
 }
 
 class DAO {
     
     static let instance = DAO()
     private init() {}
+    
+    var readedHotels:[Result] = []
+    var readedPackages:[Result] = []
     
     func jsonReader(page:Int, requester: Requester, on view: UIViewController) {
         let url = "https://www.hurb.com/search/api?q=buzios&page=\(String(page))"
@@ -32,11 +35,22 @@ class DAO {
                 
                 // Logic after response has arrived
                 DispatchQueue.main.async {
-                    requester.readedData(result: result)
+                    self.sortHotelsPackages(from: result.results,requester: requester)
                 }
             } catch {
                 debugPrint(error)
             }
             }.resume()
+    }
+    
+    func sortHotelsPackages( from hotels:[Result], requester: Requester) {
+        for result in hotels {
+            if result.category == "hotel" {
+                self.readedHotels.append(result)
+            } else {
+                self.readedPackages.append(result)
+            }
+        }
+        requester.readedData(result: hotels)
     }
 }
