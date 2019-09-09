@@ -575,6 +575,7 @@
                         <outlet property="amenityButton3" destination="XKa-NX-XET" id="diD-AY-ucA"/>
                         <outlet property="amenityButton4" destination="hTQ-Le-zD2" id="fnX-lH-292"/>
                         <outlet property="amenityButton5" destination="XyQ-RE-ehM" id="3dc-hu-bPX"/>
+                        <outlet property="amenityLabel" destination="Wtv-lk-acR" id="BpG-5M-mIG"/>
                         <outlet property="categoryButton1" destination="HA2-Wc-utK" id="vZ3-0v-4ae"/>
                         <outlet property="categoryButton2" destination="HFW-9K-Spn" id="PHj-Vy-xuH"/>
                         <outlet property="categoryButton3" destination="R1z-ML-hhW" id="EpC-bi-Nnd"/>

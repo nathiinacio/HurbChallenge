@@ -56,6 +56,8 @@ class Filter: UIViewController{
     @IBOutlet weak var amenityButton4: UIButton!
     @IBOutlet weak var amenityButton5: UIButton!
     
+    @IBOutlet weak var amenityLabel: UILabel!
+    
     override func viewDidLoad() {
         
         showFilterButton(filterButton: valueButton1)
@@ -82,6 +84,7 @@ class Filter: UIViewController{
         if isHotelFilter == true{
             viewCategoryEnable.alpha = 0
             labelCategoryEnable.alpha = 0
+            amenityLabel.text = "Amenidades:"
             categoryButton1.isEnabled = true
             categoryButton2.isEnabled = true
             categoryButton3.isEnabled = true
@@ -90,6 +93,7 @@ class Filter: UIViewController{
         }else{
             viewCategoryEnable.alpha = 0.8
             labelCategoryEnable.alpha = 1
+            amenityLabel.text = "Atributos:"
             categoryButton1.isEnabled = false
             categoryButton2.isEnabled = false
             categoryButton3.isEnabled = false
