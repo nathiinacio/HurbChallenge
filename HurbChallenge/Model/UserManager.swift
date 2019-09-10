@@ -15,8 +15,8 @@ class UserManager {
     private init(){}
     
     var currentUser: String? = nil
-    var favoritesHotels: [String]? = nil
-    var favoritesPackages: [String]? = nil
+    var favoritesHotels: [String] = []
+    var favoritesPackages: [String] = []
     
     func setup() {
         currentUser = Auth.auth().currentUser?.uid

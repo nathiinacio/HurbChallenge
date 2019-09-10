@@ -9,8 +9,14 @@ import Foundation
 import UIKit
 
 protocol Requester {
-    func readedData(result:[Result])
+    func readedData(establishments:[DataType:[Result]])
 }
+
+enum DataType:Int {
+    case hotel
+    case package
+}
+
 
 class DAO {
     
@@ -19,6 +25,7 @@ class DAO {
     
     var readedHotels:[Result] = []
     var readedPackages:[Result] = []
+    var establishments:[DataType:[Result]] = [.hotel:[], .package:[]]
     
     func jsonReader(page:Int, requester: Requester, on view: UIViewController) {
         let url = "https://www.hurb.com/search/api?q=buzios&page=\(String(page))"
@@ -45,12 +52,9 @@ class DAO {
     
     func sortHotelsPackages( from hotels:[Result], requester: Requester) {
         for result in hotels {
-            if result.category == "hotel" {
-                self.readedHotels.append(result)
-            } else {
-                self.readedPackages.append(result)
-            }
+            let dataType:DataType = result.isPackage ?? false ? .package : .hotel
+            self.establishments[dataType]?.append(result)
         }
-        requester.readedData(result: hotels)
+        requester.readedData(establishments: establishments)
     }
 }

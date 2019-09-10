@@ -14,7 +14,6 @@ class Login: UIViewController {
     // MARK: - Initialization
     
     // MARK: Outlets
-    
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -80,11 +79,9 @@ class Login: UIViewController {
         setLoginButton(enabled: formFilled)
     }
     
-    
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        // Resigns the target textField and assigns the next textField in the form.
+        /// Resigns the target textField and assigns the next textField in the form.
         
         switch textField {
         case emailTextField:
@@ -100,11 +97,9 @@ class Login: UIViewController {
         return true
     }
     
-    /**
-     Enables or Disables the **continueButton**.
-     */
     
     
+    // MARK: Auxiliar
     @objc func handleSignIn() {
         guard let email = emailTextField.text else { return }
         guard let pass = passwordTextField.text else { return }
@@ -156,6 +151,9 @@ class Login: UIViewController {
         
     }
     
+    /**
+     Enables or Disables the **continueButton**.
+     */
     
     func setLoginButton(enabled:Bool) {
         if enabled {
@@ -168,13 +166,16 @@ class Login: UIViewController {
     }
     
    
-    //Button rounded corners
+    /// Button rounded corners
     func showLoginButton(button: UIButton) {
         button.layer.cornerRadius = 25
         button.clipsToBounds = true
         button.layer.masksToBounds = true
     }
     
+    
+    
+    // MARK: Actions
     @IBAction func forgotPassword(_ sender: Any) {
         let forgotPasswordAlert = UIAlertController(title: "Esqueceu sua senha?", message: "Digite seu e-mail de login abaixo:", preferredStyle: .alert)
         forgotPasswordAlert.addTextField { (textField) in
@@ -186,9 +187,9 @@ class Login: UIViewController {
             let resetEmail = forgotPasswordAlert.textFields?.first?.text
             
             Auth.auth().sendPasswordReset(withEmail: resetEmail!, completion: { (error) in
-                //Make sure you execute the following code on the main queue
+                /// Make sure you execute the following code on the main queue
                 DispatchQueue.main.async {
-                    //Use "if let" to access the error, if it is non-nil
+                    // Use "if let" to access the error, if it is non-nil
                     if let error = error {
                         debugPrint("error: \(error.localizedDescription)")
                         let resetFailedAlert = UIAlertController(title: "Redefinir senha falhou", message: "Não existe nenhuma conta com este e-mail", preferredStyle: .alert)
@@ -204,7 +205,7 @@ class Login: UIViewController {
                 }
             })
         }))
-        //PRESENT ALERT
+        /// Present Alert
         self.present(forgotPasswordAlert, animated: true, completion: nil)
     }
     

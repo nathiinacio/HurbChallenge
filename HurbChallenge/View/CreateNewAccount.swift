@@ -26,7 +26,7 @@ class CreateNewAccount: UIViewController {
     // MARK: View Cicle
     override func viewDidLoad() {
         
-        //Button rounded corners
+        /// Button rounded corners
         showCreateNewAccountButton(button: createNewAccountButton)
         
         activityView = UIActivityIndicatorView(style: .gray)
@@ -45,7 +45,6 @@ class CreateNewAccount: UIViewController {
  
     }
 
- 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nameTextField.becomeFirstResponder()
@@ -73,7 +72,6 @@ class CreateNewAccount: UIViewController {
         activityView.center = createNewAccountButton.center
     }
     
-    
     @objc func textFieldChanged(_ target:UITextField) {
         let email = emailTextField.text
         let passwordConfirmed = passwordConfirmationTextField.text
@@ -83,8 +81,6 @@ class CreateNewAccount: UIViewController {
         let formFilled = email != nil && email != "" && passwordConfirmed != nil && passwordConfirmed != "" && password != nil && password != "" && name != nil && name != ""
         setcreateNewAccountButton(enabled: formFilled)
     }
-    
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
@@ -108,7 +104,7 @@ class CreateNewAccount: UIViewController {
         return true
     }
     
-    
+    // MARK: Auxiliar
     @objc func handleSignUp() {
         guard let email = emailTextField.text else { return }
         guard let pass = passwordTextField.text else { return }

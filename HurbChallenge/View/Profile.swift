@@ -9,23 +9,52 @@
 import UIKit
 import Firebase
 
-class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, Requester {
+class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
  
     
 
     @IBOutlet weak var profileCollectionView: UICollectionView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var favoriteLabel: UILabel!
-    
     @IBOutlet weak var emptyLabel: UILabel!
+    
     // MARK: Variables
     
     private let refreshControl = UIRefreshControl()
     
     var activityView:UIActivityIndicatorView!
-    
+    var favoriteHotels:[String] { return  UserManager.instance.favoritesHotels }
+    var favoritePackages:[String] { return UserManager.instance.favoritesPackages }
     var segmentedControl: CustomSegmentedContrl!
-    var currentSegment:Int = 0
+    var currentSegment:DataType = .hotel
+    var filterByIDString:String!
+    
+    
+    ///The hotels or packages to appear in the collection view.
+    var establishments:[DataType:[Result]] { return  DAO.instance.establishments }
+    
+    var dataSource:[DataType:[Result]] {
+        
+        var dataSource:[DataType:[Result]] = [.hotel:[], .package:[]]
+        
+        switch currentSegment {            
+        case .hotel:
+            dataSource[.hotel] = establishments[.hotel]?.filter({ (result) -> Bool in
+                if let _ = favoriteHotels.firstIndex(of: result.id) {
+                    return true
+                }
+                return false
+            })
+        case .package:
+            dataSource[.package] = establishments[.package]?.filter({ (result) -> Bool in
+                if let _ = favoritePackages.firstIndex(of: result.id) {
+                    return true
+                }
+                return false
+            })
+        }
+        return dataSource
+    }
     
     // MARK: - Methods
     
@@ -40,7 +69,7 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
         segmentedControl.addTarget(self, action: #selector(onChangeOfSegment(_:)), for: .valueChanged)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(segmentedControl)
-        self.currentSegment = 0
+     
         
         //Add constraints
         setUpSegmentedControlConstraints()
@@ -71,39 +100,22 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
     
     override func viewWillAppear(_ animated: Bool) {
         nameLabel.text = AppSettings.displayName
-       
-    }
-    
-    func readedData(result: [Result]) {
-        DispatchQueue.main.async {
-            self.profileCollectionView.reloadData()
-            self.activityView.stopAnimating()
-        }
+        profileCollectionView.reloadData()
+        emptyLabelStatus()
     }
     
     
     // MARK: CollectionView configuration
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if currentSegment == 0 {
-            return UserManager.instance.favoritesHotels!.count
-        } else {
-            return UserManager.instance.favoritesPackages!.count
-        }
+        return  dataSource[currentSegment]?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let profileCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCell
         
-        if !DAO.instance.readedHotels.isEmpty{
-            if currentSegment == 0 {
-                let result = DAO.instance.readedHotels[indexPath.row]
-                profileCell.populateFavoritesHotels(from: result)
-            } else {
-                let result = DAO.instance.readedPackages[indexPath.row]
-                profileCell.populateFavoritesPackages(from: result)
-            }
-        }
+        profileCell.populateFavorites(from: dataSource[currentSegment]![indexPath.row], for: currentSegment)
+        
         return profileCell
     }
     
@@ -128,21 +140,15 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
     
     //segmented control adjustments
     @objc func onChangeOfSegment(_ sender: CustomSegmentedContrl) {
-        self.currentSegment = sender.selectedSegmentIndex
+        self.currentSegment = sender.selectedSegmentIndex == 0 ? .hotel : .package
         profileCollectionView.reloadData()
-        emptyLabelStatus()
-        
     }
     
     
     func emptyLabelStatus() {
-        let labelsText = ["Você não possui hotéis favoritos ainda.", "Você não possui pacotes favoritos ainda."]
-        self.emptyLabel.text = labelsText[self.currentSegment]
-        
-        if currentSegment == 0 && UserManager.instance.favoritesHotels!.count == 0 {
+        if currentSegment == .hotel && favoriteHotels.count == 0 {
             self.emptyLabel.alpha = 1
-            
-        } else if currentSegment == 1  && UserManager.instance.favoritesPackages!.count == 0 {
+        } else if currentSegment == .package  &&  favoriteHotels.count == 0 {
             self.emptyLabel.alpha = 1
         }
         else {

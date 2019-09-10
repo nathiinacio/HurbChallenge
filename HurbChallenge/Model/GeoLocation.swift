@@ -9,5 +9,5 @@ import Foundation
 
 // MARK: - GeoLocation
 struct GeoLocation: Codable {
-    let lat, lon: Double
+    let lat, lon: Double?
 }

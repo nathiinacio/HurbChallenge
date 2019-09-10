@@ -15,11 +15,10 @@ class CardCell: UICollectionViewCell {
     
     
     // MARK: Outlets
-    
     @IBOutlet weak var view: UIView!
     
     @IBOutlet weak var title: UILabel!
- 
+    
     @IBOutlet weak var photo: UIImageView!
     
     @IBOutlet weak var favoriteButton: UIButton!
@@ -45,11 +44,9 @@ class CardCell: UICollectionViewCell {
     // MARK: Declared
     
     // MARK: - Variables
-
+    
     var isFlagged: Bool = false
-    
     var starsCount = 0
-    
     var id = ""
     var isHotel = true
     
@@ -59,35 +56,36 @@ class CardCell: UICollectionViewCell {
     // MARK: View content
     
     override func layoutSubviews() {
-        //Shadows
+        
+        ///Shadows
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.23
         view.layer.shadowRadius = 4
         view.layer.cornerRadius = 12
         
-        //Rounded Image
+        ///Rounded Image
         photo.layer.cornerRadius = photo.frame.height/2
         photo.clipsToBounds = true
-
         
-        // Favorite image
+        
+        /// Favorite image
         let imageSelected = UIImage(named: "favoriteSelected")
         favoriteButton.setImage(imageSelected, for: .selected)
-
+        
         let imageNormal = UIImage(named: "favoriteNotSelected")
         favoriteButton.setImage(imageNormal, for: .normal)
         
-        // Disenable all iteractions
+        /// Disenable all iteractions
         for item in view.subviews {
             item.isUserInteractionEnabled = false
         }
         
-        // Enable flag and view iteractions
+        /// Enable flag and view iteractions
         favoriteButton.isUserInteractionEnabled = true
         view.isUserInteractionEnabled = true
         
-        //Ameneties rounded corners
+        ///Ameneties rounded corners
         amenity1.layer.cornerRadius = 10
         amenity1.clipsToBounds = true
         amenity1.layer.masksToBounds = true
@@ -102,261 +100,29 @@ class CardCell: UICollectionViewCell {
         
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        photo.image = nil
-    }
+    // MARK: Cell Population
     
-    // MARK: Cell population
-    
-    func populateHotel(from result:Result) {
-        
-        
-            if result.isHotel == true {
-      
-                
-                //ID
-                id = result.id
-                isHotel = true
-                
-                // Description
-                definition.text = result.smallDescription
-                
-                // Amenities
-                
-                isAmenityOrAtribute.text = "Amenidades:"
-                if result.amenities.count >= 3{
-                    amenity1.text = result.amenities[0].name
-                    amenity2.text = result.amenities[1].name
-                    amenity3.text = result.amenities[2].name
-                    
-                } else if result.amenities.count == 2{
-                    //amenity1.text = result.amenities[0].name
-                    amenity2.text = result.amenities[0].name
-                    amenity3.text = result.amenities[1].name
-                } else if result.amenities.count == 1{
-                    //amenity1.text = result.amenities[0].name
-                    amenity2.text = result.amenities[0].name
-                    //amenity3.text = result.amenities[2].name
-                }
-     
-                
-                // Name
-                 title.text = result.name
-                
-                //Local
-                
-                cityLabel.text = result.address.city
-                stateLabel.text = "| " + result.address.state + " |"
-            
-                //Price
-                 let price = result.price.amountPerDay
-                 let stringValue = "\(price)"
-                priceMoney.text = "BRL " + stringValue
-
-                //Category
-                if result.stars == 5 {
-                    self.category1.alpha = 1
-                    self.category2.alpha = 1
-                    self.category3.alpha = 1
-                    self.category4.alpha = 1
-                    self.category5.alpha = 1
-                }else if result.stars == 4 {
-                    self.category1.alpha = 1
-                    self.category2.alpha = 1
-                    self.category3.alpha = 1
-                    self.category4.alpha = 1
-                    self.category5.alpha = 0
-                }else if result.stars == 3 {
-                    self.category1.alpha = 1
-                    self.category2.alpha = 1
-                    self.category3.alpha = 1
-                    self.category4.alpha = 0
-                    self.category5.alpha = 0
-                }else if result.stars == 2 {
-                    self.category1.alpha = 1
-                    self.category2.alpha = 1
-                    self.category3.alpha = 0
-                    self.category4.alpha = 0
-                    self.category5.alpha = 0
-                }else if result.stars == 1 {
-                    self.category1.alpha = 1
-                    self.category2.alpha = 0
-                    self.category3.alpha = 0
-                    self.category4.alpha = 0
-                    self.category5.alpha = 0
-                }else{
-                    self.category1.alpha = 0
-                    self.category2.alpha = 0
-                    self.category3.alpha = 0
-                    self.category4.alpha = 0
-                    self.category5.alpha = 0
-                }
-                
-            // Image
-                addImageToView(from: result.url, imageView: photo)
-                
-            
-            // Checking if the flag is selected or not
-                let array = UserManager.instance.favoritesHotels
-                let indexOf = find(value: id, in: array!)
-            
-            if indexOf != nil {
-                self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
-                self.isFlagged = true
-                self.favoriteButton.isSelected = true
-            }else{
-                self.favoriteButton.imageView?.image = UIImage(named: "favoriteNotSelected")
-                self.isFlagged = false
-                self.favoriteButton.isSelected = false
-            }
-
+    func populate(from result: Result, for dataType: DataType) {
+        switch dataType {
+        case .hotel:
+            populateHotel(from: result)
+        case .package:
+            populatePackage(from: result)
         }
-        
     }
     
-    func populatePackage(from result:Result) {
+    private func populateHotel(from result:Result) {
         
-    
-        if result.isPackage == true {
-        
-            //ID
+        if result.isHotel == true {
+            
+            ///ID
             id = result.id
-            isHotel = false
+            isHotel = true
             
-            // Description
+            /// Description
             definition.text = result.smallDescription
             
-            // Atributes
-            isAmenityOrAtribute.text = "Atributos:"
-            if result.amenities.count >= 3{
-                amenity1.text = result.amenities[0].name
-                amenity2.text = result.amenities[1].name
-                amenity3.text = result.amenities[2].name
-                
-            } else if result.amenities.count == 2{
-                //amenity1.text = result.amenities[0].name
-                amenity2.text = result.amenities[0].name
-                amenity3.text = result.amenities[1].name
-            } else if result.amenities.count == 1{
-                //amenity1.text = result.amenities[0].name
-                amenity2.text = result.amenities[0].name
-                //amenity3.text = result.amenities[2].name
-            }
-            
-            // Name
-            title.text = result.name
-        
-            //Local
-            cityLabel.text = result.address.city
-            stateLabel.text = "| " + result.address.state + " |"
-        
-            //Price
-            let price = result.price.amountPerDay
-            let stringValue = "\(price)"
-            priceMoney.text = "BRL " + stringValue
-            
-            //Category
-            category1.alpha = 0
-            category2.alpha = 0
-            category3.alpha = 0
-            category4.alpha = 0
-            category5.alpha = 0
-            
-            //Image
-            addImageToView(from: result.url, imageView: photo)
-            
-            
-            // Checking if the flag is selected or not
-            let array = UserManager.instance.favoritesPackages
-            let indexOf = find(value: id, in: array!)
-            
-            if indexOf != nil {
-                self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
-                self.isFlagged = true
-                self.favoriteButton.isSelected = true
-            }else{
-                self.favoriteButton.imageView?.image = UIImage(named: "favoriteNotSelected")
-                self.isFlagged = false
-                self.favoriteButton.isSelected = false
-            }
-        }
-    }
-    
-  
-    func populateFavoritesPackages(from result:Result) {
-        
-        id = result.id
-        
-        let array = UserManager.instance.favoritesPackages
-        let indexOf = find(value: id, in: array!)
-        
-        if result.isPackage == true && indexOf != nil {
-    
-            // Description
-            definition.text = result.smallDescription
-    
-            // Atributes
-            isAmenityOrAtribute.text = "Atributos:"
-            if result.amenities.count >= 3{
-            amenity1.text = result.amenities[0].name
-            amenity2.text = result.amenities[1].name
-            amenity3.text = result.amenities[2].name
-    
-            } else if result.amenities.count == 2{
-            //amenity1.text = result.amenities[0].name
-            amenity2.text = result.amenities[0].name
-            amenity3.text = result.amenities[1].name
-            } else if result.amenities.count == 1{
-            //amenity1.text = result.amenities[0].name
-            amenity2.text = result.amenities[0].name
-            //amenity3.text = result.amenities[2].name
-            }
-    
-            // Name
-            title.text = result.name
-    
-            //Local
-            cityLabel.text = result.address.city
-            stateLabel.text = "| " + result.address.state + " |"
-    
-            //Price
-            let price = result.price.amountPerDay
-            let stringValue = "\(price)"
-            priceMoney.text = "BRL " + stringValue
-    
-            //Category
-            category1.alpha = 0
-            category2.alpha = 0
-            category3.alpha = 0
-            category4.alpha = 0
-            category5.alpha = 0
-    
-            //Image
-            addImageToView(from: result.url, imageView: photo)
-    
-    
-            //Flag Selected
-            self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
-            self.isFlagged = true
-            self.favoriteButton.isSelected = true
-    }
-}
-    
-    
-    func populateFavoritesHotels(from result:Result) {
-        
-        id = result.id
-        
-        let array = UserManager.instance.favoritesHotels
-        let indexOf = find(value: id, in: array!)
-        
-        if result.isHotel == true && indexOf != nil {
-            
-            // Description
-            definition.text = result.smallDescription
-            
-            // Atributes
+            /// Amenities
             isAmenityOrAtribute.text = "Amenidades:"
             if result.amenities.count >= 3{
                 amenity1.text = result.amenities[0].name
@@ -373,19 +139,20 @@ class CardCell: UICollectionViewCell {
                 //amenity3.text = result.amenities[2].name
             }
             
-            // Name
+            
+            ///Name
             title.text = result.name
             
-            //Local
+            ///Local
             cityLabel.text = result.address.city
             stateLabel.text = "| " + result.address.state + " |"
             
-            //Price
+            ///Price
             let price = result.price.amountPerDay
             let stringValue = "\(price)"
             priceMoney.text = "BRL " + stringValue
             
-            //Category
+            ///Category
             if result.stars == 5 {
                 self.category1.alpha = 1
                 self.category2.alpha = 1
@@ -423,31 +190,280 @@ class CardCell: UICollectionViewCell {
                 self.category4.alpha = 0
                 self.category5.alpha = 0
             }
-
             
-            //Image
-            addImageToView(from: result.url, imageView: photo)
+            /// Image
+            addImageToView(from: result.gallery[0].url, imageView: photo)
             
-            //Flag Selected
-            self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
-            self.isFlagged = true
-            self.favoriteButton.isSelected = true
-        }
-    }
-    
-    
-    
-    func find(value searchValue: String, in array: [String]) -> Int?
-    {
-        for (index, value) in array.enumerated()
-        {
-            if value == searchValue {
-                return index
+            
+            /// Checking if the flag is selected or not
+            let array = UserManager.instance.favoritesHotels
+            let indexOf = find(value: id, in: array)
+            if indexOf != nil {
+                self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
+                self.isFlagged = true
+                self.favoriteButton.isSelected = true
+            }else{
+                self.favoriteButton.imageView?.image = UIImage(named: "favoriteNotSelected")
+                self.isFlagged = false
+                self.favoriteButton.isSelected = false
             }
         }
         
-        return nil
     }
+    
+    func populatePackage(from result:Result) {
+        
+        if result.isPackage == true {
+            
+            /// ID
+            id = result.id
+            isHotel = false
+            
+            /// Description
+            definition.text = result.smallDescription
+            
+            /// Atributes
+            isAmenityOrAtribute.text = "Atributos:"
+            if result.amenities.count >= 3{
+                amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[1].name
+                amenity3.text = result.amenities[2].name
+                
+            } else if result.amenities.count == 2{
+                //amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[0].name
+                amenity3.text = result.amenities[1].name
+            } else if result.amenities.count == 1{
+                //amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[0].name
+                //amenity3.text = result.amenities[2].name
+            }
+            
+            /// Name
+            title.text = result.name
+            
+            /// Local
+            cityLabel.text = result.address.city
+            stateLabel.text = "| " + result.address.state + " |"
+            
+            /// Price
+            let price = result.price.amountPerDay
+            let stringValue = "\(price)"
+            priceMoney.text = "BRL " + stringValue
+            
+            /// Category
+            category1.alpha = 0
+            category2.alpha = 0
+            category3.alpha = 0
+            category4.alpha = 0
+            category5.alpha = 0
+            
+            /// Image
+            addImageToView(from: result.gallery[0].url, imageView: photo)
+            
+            /// Checking if the flag is selected or not
+            let array = UserManager.instance.favoritesHotels
+            let indexOf = find(value: id, in: array)
+            if indexOf != nil {
+                self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
+                self.isFlagged = true
+                self.favoriteButton.isSelected = true
+            }else{
+                self.favoriteButton.imageView?.image = UIImage(named: "favoriteNotSelected")
+                self.isFlagged = false
+                self.favoriteButton.isSelected = false
+            }
+        }
+    }
+    
+    
+    func populateFavoritesPackages(from result:Result) {
+        
+        id = result.id
+        
+        let array = UserManager.instance.favoritesPackages
+        let indexOf = find(value: id, in: array)
+        
+        if result.isPackage == true &&  indexOf != nil {
+            
+            /// ID
+            id = result.id
+            isHotel = false
+            
+            /// Description
+            definition.text = result.smallDescription
+            
+            /// Atributes
+            isAmenityOrAtribute.text = "Atributos:"
+            if result.amenities.count >= 3{
+                amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[1].name
+                amenity3.text = result.amenities[2].name
+                
+            } else if result.amenities.count == 2{
+                //amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[0].name
+                amenity3.text = result.amenities[1].name
+            } else if result.amenities.count == 1{
+                //amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[0].name
+                //amenity3.text = result.amenities[2].name
+            }
+            
+            /// Name
+            title.text = result.name
+            
+            /// Local
+            cityLabel.text = result.address.city
+            stateLabel.text = "| " + result.address.state + " |"
+            
+            /// Price
+            let price = result.price.amountPerDay
+            let stringValue = "\(price)"
+            priceMoney.text = "BRL " + stringValue
+            
+            /// Category
+            category1.alpha = 0
+            category2.alpha = 0
+            category3.alpha = 0
+            category4.alpha = 0
+            category5.alpha = 0
+            
+            /// Image
+            addImageToView(from: result.gallery[0].url, imageView: photo)
+            
+            /// Checking if the flag is selected or not
+            let array = UserManager.instance.favoritesHotels
+            let indexOf = find(value: id, in: array)
+            if indexOf != nil {
+                self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
+                self.isFlagged = true
+                self.favoriteButton.isSelected = true
+            }else{
+                self.favoriteButton.imageView?.image = UIImage(named: "favoriteNotSelected")
+                self.isFlagged = false
+                self.favoriteButton.isSelected = false
+            }
+        }
+        
+    }
+    
+    
+    func populateFavoritesHotels(from result:Result) {
+        
+        id = result.id
+        
+        let array = UserManager.instance.favoritesHotels
+        let indexOf = find(value: id, in: array)
+        
+        if result.isHotel == true &&  indexOf != nil {
+            
+            ///ID
+            id = result.id
+            isHotel = true
+            
+            /// Description
+            definition.text = result.smallDescription
+            
+            /// Amenities
+            isAmenityOrAtribute.text = "Amenidades:"
+            if result.amenities.count >= 3{
+                amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[1].name
+                amenity3.text = result.amenities[2].name
+                
+            } else if result.amenities.count == 2{
+                //amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[0].name
+                amenity3.text = result.amenities[1].name
+            } else if result.amenities.count == 1{
+                //amenity1.text = result.amenities[0].name
+                amenity2.text = result.amenities[0].name
+                //amenity3.text = result.amenities[2].name
+            }
+            
+            
+            ///Name
+            title.text = result.name
+            
+            ///Local
+            cityLabel.text = result.address.city
+            stateLabel.text = "| " + result.address.state + " |"
+            
+            ///Price
+            let price = result.price.amountPerDay
+            let stringValue = "\(price)"
+            priceMoney.text = "BRL " + stringValue
+            
+            ///Category
+            if result.stars == 5 {
+                self.category1.alpha = 1
+                self.category2.alpha = 1
+                self.category3.alpha = 1
+                self.category4.alpha = 1
+                self.category5.alpha = 1
+            }else if result.stars == 4 {
+                self.category1.alpha = 1
+                self.category2.alpha = 1
+                self.category3.alpha = 1
+                self.category4.alpha = 1
+                self.category5.alpha = 0
+            }else if result.stars == 3 {
+                self.category1.alpha = 1
+                self.category2.alpha = 1
+                self.category3.alpha = 1
+                self.category4.alpha = 0
+                self.category5.alpha = 0
+            }else if result.stars == 2 {
+                self.category1.alpha = 1
+                self.category2.alpha = 1
+                self.category3.alpha = 0
+                self.category4.alpha = 0
+                self.category5.alpha = 0
+            }else if result.stars == 1 {
+                self.category1.alpha = 1
+                self.category2.alpha = 0
+                self.category3.alpha = 0
+                self.category4.alpha = 0
+                self.category5.alpha = 0
+            }else{
+                self.category1.alpha = 0
+                self.category2.alpha = 0
+                self.category3.alpha = 0
+                self.category4.alpha = 0
+                self.category5.alpha = 0
+            }
+            
+            /// Image
+            addImageToView(from: result.gallery[0].url, imageView: photo)
+            
+            /// Checking if the flag is selected or not
+            let array = UserManager.instance.favoritesHotels
+            let indexOf = find(value: id, in: array)
+            if indexOf != nil {
+                self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
+                self.isFlagged = true
+                self.favoriteButton.isSelected = true
+            }else{
+                self.favoriteButton.imageView?.image = UIImage(named: "favoriteNotSelected")
+                self.isFlagged = false
+                self.favoriteButton.isSelected = false
+            }
+        }
+        
+    }
+    
+    func populateFavorites(from result: Result, for dataType: DataType) {
+        switch dataType {
+        case .hotel:
+            populateFavoritesHotels(from: result)
+        case .package:
+            populateFavoritesPackages(from: result)
+        
+        }
+        
+    }
+    
     
     
     // MARK: Auxiliar
@@ -468,42 +484,53 @@ class CardCell: UICollectionViewCell {
             }
             
             imageView.image = img
+            imageView.contentMode = .scaleAspectFill
+        }
+        
+    }
+    
+    
+    func find(value searchValue: String, in array: [String]) -> Int?
+    {
+        for (index, value) in array.enumerated()
+        {
+            if value == searchValue {
+                return index
+            }
+        }
+        
+        return nil
+    }
+    
+    
+    // MARK: - Actions
+    @IBAction func saveButton(_ sender: Any) {
+        
+        isFlagged.toggle()
+        favoriteButton.isSelected = isFlagged
+        
+        switch isFlagged {
+        case true:
+            if isHotel {
+                UserManager.instance.favoritesHotels.append(id)
+            }else{
+                UserManager.instance.favoritesPackages.append(id)
+            }
+            
+        case false:
+            if isHotel {
+                if let index = UserManager.instance.favoritesHotels.firstIndex(of: id) {
+                    UserManager.instance.favoritesHotels.remove(at: index)
+                }
+            }else{
+                if let index = UserManager.instance.favoritesPackages.firstIndex(of: id) {
+                    UserManager.instance.favoritesPackages.remove(at: index)
+                }
+                
+            }
+            
         }
 
     }
-    
-
-
-    
-    // MARK: - Actions
-
-    @IBAction func saveButton(_ sender: Any) {
-        
-            isFlagged = !isFlagged
-        
-            switch isFlagged {
-                case true:
-                    if isHotel == true{
-                         UserManager.instance.favoritesHotels?.append(id)
-                    }else{
-                         UserManager.instance.favoritesPackages?.append(id)
-                    }
-                   favoriteButton.isSelected = true
-                case false:
-                    if isHotel == true{
-                        var array = UserManager.instance.favoritesHotels
-                        let indexOf = find(value: id, in: array!)
-                        array?.remove(at: indexOf!)
-                        
-                    }else{
-                        var array = UserManager.instance.favoritesPackages
-                        let indexOf = find(value: id, in: array!)
-                        array?.remove(at: indexOf!)
-                    }
-                    favoriteButton.isSelected = false
-                }
-
-        }
-    
-
 }
+

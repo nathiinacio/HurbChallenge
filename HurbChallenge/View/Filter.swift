@@ -76,9 +76,7 @@ class Filter: UIViewController{
     
     
     // MARK: Auxiliar
-    
-    
-    
+
     func showCategoryButtons(currentSegment: Bool){
         
         if isHotelFilter == true{

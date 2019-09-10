@@ -31,11 +31,7 @@ class Start: UIViewController {
 
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-    
-    }
-    
-    
+
     override func viewDidAppear(_ animated: Bool) {
         createNewAccountButtonAnimation()
         loginButtonAnimation ()
@@ -44,7 +40,7 @@ class Start: UIViewController {
 
      // MARK: Auxiliar
 
-    // Buttons rounded corners
+    /// Buttons rounded corners
     func showButtons(button: UIButton) {
         button.layer.cornerRadius = 30
         button.clipsToBounds = true
@@ -52,7 +48,7 @@ class Start: UIViewController {
     }
     
 
-    // Create new account button animation
+    /// Create new account button animation
     func createNewAccountButtonAnimation () {
         createNewAccountButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         UIView.animate(withDuration: 3.0,
@@ -65,7 +61,7 @@ class Start: UIViewController {
         })
     }
     
-    // Login button animation
+    /// Login button animation
     func loginButtonAnimation () {
         loginButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         UIView.animate(withDuration: 3.0,
