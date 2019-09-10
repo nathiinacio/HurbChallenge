@@ -9,12 +9,15 @@
 import UIKit
 import Firebase
 
-class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
+class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, Requester {
+ 
+    
 
     @IBOutlet weak var profileCollectionView: UICollectionView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var favoriteLabel: UILabel!
     
+    @IBOutlet weak var emptyLabel: UILabel!
     // MARK: Variables
     
     private let refreshControl = UIRefreshControl()
@@ -24,11 +27,6 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
     var segmentedControl: CustomSegmentedContrl!
     var currentSegment:Int = 0
     
-    /// The hotels or packages to appear in the collection view.
-    
-    // var favorites: [Hotel] = []
-  
-
     // MARK: - Methods
     
     // MARK: View Cicle
@@ -49,20 +47,24 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
         
         //Refresh control customization
         refreshControl.tintColor = UIColor.palettePink
-        
-        //        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         
         //Activity view customization
         activityView = UIActivityIndicatorView(style: .gray)
         activityView.color = UIColor.palettePink
-        activityView.frame = CGRect(x: 0, y: 0, width: 300.0, height: 300.0)
+        activityView.frame = CGRect(x: profileCollectionView.center.x, y: profileCollectionView.center.y, width: 300.0, height: 300.0)
         activityView.center = view.center
         activityView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         view.addSubview(activityView)
         activityView.startAnimating()
         
+        emptyLabel.alpha = 1
+        
         Auth.auth().currentUser?.reload()
+        
         profileCollectionView.reloadData()
+        
+        
         setUpCollectionView()
         
     }
@@ -72,25 +74,37 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
        
     }
     
+    func readedData(result: [Result]) {
+        DispatchQueue.main.async {
+            self.profileCollectionView.reloadData()
+            self.activityView.stopAnimating()
+        }
+    }
+    
     
     // MARK: CollectionView configuration
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if currentSegment == 1 {
-            return 4
+        if currentSegment == 0 {
+            return UserManager.instance.favoritesHotels!.count
         } else {
-            return 3
+            return UserManager.instance.favoritesPackages!.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCell
+        let profileCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCell
         
-        //        feedCell.type = .project
-        //        feedCell.project = projects[indexPath.item]
-        //        feedCell.showInfoProject()
-        
-        return feedCell
+        if !DAO.instance.readedHotels.isEmpty{
+            if currentSegment == 0 {
+                let result = DAO.instance.readedHotels[indexPath.row]
+                profileCell.populateFavoritesHotels(from: result)
+            } else {
+                let result = DAO.instance.readedPackages[indexPath.row]
+                profileCell.populateFavoritesPackages(from: result)
+            }
+        }
+        return profileCell
     }
     
     
@@ -107,6 +121,7 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
         profileCollectionView.isUserInteractionEnabled = true
         profileCollectionView.register(nib, forCellWithReuseIdentifier: "CardCell")
         
+        profileCollectionView.reloadData()
         activityView.stopAnimating()
         
     }
@@ -115,7 +130,24 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
     @objc func onChangeOfSegment(_ sender: CustomSegmentedContrl) {
         self.currentSegment = sender.selectedSegmentIndex
         profileCollectionView.reloadData()
+        emptyLabelStatus()
         
+    }
+    
+    
+    func emptyLabelStatus() {
+        let labelsText = ["Você não possui hotéis favoritos ainda.", "Você não possui pacotes favoritos ainda."]
+        self.emptyLabel.text = labelsText[self.currentSegment]
+        
+        if currentSegment == 0 && UserManager.instance.favoritesHotels!.count == 0 {
+            self.emptyLabel.alpha = 1
+            
+        } else if currentSegment == 1  && UserManager.instance.favoritesPackages!.count == 0 {
+            self.emptyLabel.alpha = 1
+        }
+        else {
+            self.emptyLabel.alpha = 0
+        }
     }
     
     private func setUpSegmentedControlConstraints() {
@@ -126,6 +158,13 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
             segmentedControl.bottomAnchor.constraint(equalTo: profileCollectionView.topAnchor, constant: -45),
             segmentedControl.heightAnchor.constraint(greaterThanOrEqualToConstant: 45)
             ])
+    }
+    
+    @objc private func refreshData(_ sender: Any) {
+        profileCollectionView.reloadData()
+        self.refreshControl.endRefreshing()
+        emptyLabelStatus()
+        
     }
     
     //cell size

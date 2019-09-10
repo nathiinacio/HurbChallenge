@@ -15,11 +15,13 @@ class UserManager {
     private init(){}
     
     var currentUser: String? = nil
-    
-//    let teas = ["Gengibre", "Frutas Vermelhas", "Erva Doce", "Camomila", "Capim Limão", "Chá Preto", "Hibisco", "Hortelã"]
+    var favoritesHotels: [String]? = nil
+    var favoritesPackages: [String]? = nil
     
     func setup() {
         currentUser = Auth.auth().currentUser?.uid
+        favoritesHotels = []
+        favoritesPackages = [] 
     }
     
     func login(withEmail email: String, password: String, completion: @escaping (Error?) -> Void) {

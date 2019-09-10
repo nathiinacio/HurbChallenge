@@ -23,6 +23,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     @IBOutlet weak var searchField: UITextField!
     
     @IBOutlet weak var searchButton: UIButton!
+
     
     // MARK: Variables
     
@@ -174,7 +175,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
             segmentedControl.heightAnchor.constraint(greaterThanOrEqualToConstant: 45)
             ])
     }
-    
+
     //cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 357, height: 441)
@@ -197,6 +198,12 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
                
             }
         }
+    }
+    
+    @objc private func refreshData(_ sender: Any) {
+        DAO.instance.jsonReader(page: 1, requester: self, on: self)
+        collectionViewFeed.reloadData()
+        self.refreshControl.endRefreshing()
     }
     
     

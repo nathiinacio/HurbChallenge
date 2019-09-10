@@ -300,8 +300,6 @@ class CreateNewAccount: UIViewController {
                 debugPrint("Error writing document: \(err.localizedDescription)")
             } else {
                 debugPrint("Document successfully written!")
-                FBRef.users.document("\(uid)").collection("myFavoriteHotels").document("first").setData(["id" : ""])
-                FBRef.users.document("\(uid)").collection("myFavoritePackages").document("first").setData(["id" : ""])
                 self.performSegue(withIdentifier: "thankScreen", sender: self)
             }
         }
