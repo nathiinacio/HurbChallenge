@@ -15,18 +15,25 @@ Na aba do feed divide-se a apresentaçao dos hotéis e pacotes através de um, p
 
 Além da aba do feed, foi implementada uma aba de perfil que acessa os favoritos do usuário. Isso é possivel pois logo quando abre-se o app, a primeira interação é criar uma conta com suas informações. Portanto, tem-se o controle dos usuários e  consequentemente o que cada um "guardou" como favorito para ter acesso. O banco de dados escolhido para essa implementação foi o Firebase.
 
-![](/Users/nathaliainacio/Desktop/profileScreen.png)
+<p align="center">
+<img src="profileScreen.png" alt="Profile Screen" />
+</p>
+
 
 Telas de Login e Criar conta:
 
-![](/Users/nathaliainacio/Desktop/LoginAndCreateNewAccount.png)
+<p align="center">
+<img src="LoginAndCreateNewAccount.png" alt="Login Screen" />
+</p>
 
 
 ### O que está faltando?
 
 Existe uma tela de filtro que é aberta quando clica-se no botão de filtro ao lado da barra de busca. Seu objetivo era filtrar os hotéis pela categoria de estrelas que o usuário gostaria de ver. Portanto, algo estava dando errado na implementação então o código está parcialmente comentado. Com isso o feed não está ordenado pelas estrelas pois o objetivo era ordena-las opcionalmente através dessa busca mais detalhada.
 
-![](/Users/nathaliainacio/Desktop/filterScreen.png)
+<p align="center">
+<img src="filterScreen.png" alt="Filter Screen" />
+</p>
 
 
 ## UI | UX
