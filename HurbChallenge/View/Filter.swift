@@ -196,7 +196,7 @@ class Filter: UIViewController{
     
     
     @IBAction func searchButton(_ sender: Any) {
-        
+//        self.performSegue(withIdentifier: "feedScreen", sender: self) ///Not repopulating the feed correctly
          dismiss()
         
     }
