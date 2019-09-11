@@ -27,7 +27,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     var activityView:UIActivityIndicatorView!
     var segmentedControl: CustomSegmentedContrl!
     var currentSegment:DataType = .hotel
-    var filterByCategory:Bool { return (categoriesToFilter.count) > 0}
+    var filterByCategory:Bool = false
     var categoriesToFilter:[Int] = []
     var filterByName:Bool { return (searchField.text?.count ?? 0) > 3}
     var filterByNameString:String {return searchField.text?.lowercased() ?? ""}
@@ -45,7 +45,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
                 }
                 return false
             })
-    
+
         } // else
         
         if filterByName {
@@ -101,7 +101,8 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
         
         collectionViewFeed.reloadData()
         setUpCollectionView()
-     
+        uptadeSearchBar()
+        
         ///Function to read JSON
         DAO.instance.jsonReader(page: 1, requester: self, on: self)
         
@@ -162,6 +163,10 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     ///Uptade Search Bar
     @objc func uptadeSearchBar(){
         if filterByName {
+            collectionViewFeed.reloadData()
+            emptyLabelStatus()
+        }
+        if filterByCategory {
             collectionViewFeed.reloadData()
             emptyLabelStatus()
         }
