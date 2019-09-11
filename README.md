@@ -9,7 +9,9 @@ Criei um app para iOS utilizando da linguagem Swift  que consome o JSON exposto 
 
 Na aba do feed divide-se a apresentaçao dos hotéis e pacotes através de um, para facilitar o entedimento do que está sendo listado e/ou pesquisado pelo usuário. Além disso, tem-se uma barra de busca onde é possivel fazer uma busca rápida por nomes de hotéis ou pacotes. 
 
-![](/Users/nathaliainacio/Desktop/feefScreen.png)
+<p align="center">
+<img src="feedScreen.png" alt="Feed Screen" />
+</p>
 
 Além da aba do feed, foi implementada uma aba de perfil que acessa os favoritos do usuário. Isso é possivel pois logo quando abre-se o app, a primeira interação é criar uma conta com suas informações. Portanto, tem-se o controle dos usuários e  consequentemente o que cada um "guardou" como favorito para ter acesso. O banco de dados escolhido para essa implementação foi o Firebase.
 
