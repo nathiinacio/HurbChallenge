@@ -333,19 +333,10 @@ class CardCell: UICollectionViewCell {
             addImageToView(from: result.gallery[0].url, imageView: photo)
             
             /// Checking if the flag is selected or not
-            let array = UserManager.instance.favoritesHotels
-            let indexOf = find(value: id, in: array)
-            if indexOf != nil {
-                self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
-                self.isFlagged = true
-                self.favoriteButton.isSelected = true
-            }else{
-                self.favoriteButton.imageView?.image = UIImage(named: "favoriteNotSelected")
-                self.isFlagged = false
-                self.favoriteButton.isSelected = false
-            }
+            self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
+            self.isFlagged = true
+            self.favoriteButton.isSelected = true
         }
-        
     }
     
     
@@ -438,17 +429,9 @@ class CardCell: UICollectionViewCell {
             addImageToView(from: result.gallery[0].url, imageView: photo)
             
             /// Checking if the flag is selected or not
-            let array = UserManager.instance.favoritesHotels
-            let indexOf = find(value: id, in: array)
-            if indexOf != nil {
-                self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
-                self.isFlagged = true
-                self.favoriteButton.isSelected = true
-            }else{
-                self.favoriteButton.imageView?.image = UIImage(named: "favoriteNotSelected")
-                self.isFlagged = false
-                self.favoriteButton.isSelected = false
-            }
+            self.favoriteButton.imageView?.image = UIImage(named: "favoriteSelected")
+            self.isFlagged = true
+            self.favoriteButton.isSelected = true
         }
         
     }

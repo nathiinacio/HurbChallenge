@@ -142,13 +142,14 @@ class Profile: UIViewController, UICollectionViewDelegateFlowLayout, UICollectio
     @objc func onChangeOfSegment(_ sender: CustomSegmentedContrl) {
         self.currentSegment = sender.selectedSegmentIndex == 0 ? .hotel : .package
         profileCollectionView.reloadData()
+        emptyLabelStatus()
     }
     
     
     func emptyLabelStatus() {
         if currentSegment == .hotel && favoriteHotels.count == 0 {
             self.emptyLabel.alpha = 1
-        } else if currentSegment == .package  &&  favoriteHotels.count == 0 {
+        } else if currentSegment == .package && favoritePackages.count == 0 {
             self.emptyLabel.alpha = 1
         }
         else {

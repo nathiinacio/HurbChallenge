@@ -17,9 +17,8 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     
     // MARK: Outlets
     @IBOutlet weak var collectionViewFeed: UICollectionView!
-    
+    @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var searchLabel: UILabel!
-    
     @IBOutlet weak var searchField: UITextField!
     
     // MARK: Variables
@@ -28,7 +27,8 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     var activityView:UIActivityIndicatorView!
     var segmentedControl: CustomSegmentedContrl!
     var currentSegment:DataType = .hotel
-    var isFiltering:Bool = false
+    var filterByCategory:Bool { return (categoriesToFilter.count) > 0}
+    var categoriesToFilter:[Int] = []
     var filterByName:Bool { return (searchField.text?.count ?? 0) > 3}
     var filterByNameString:String {return searchField.text?.lowercased() ?? ""}
     
@@ -37,6 +37,17 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     var establishments = DAO.instance.establishments
     
     var dataSource:[DataType:[Result]] {
+        
+        if filterByCategory{
+            establishments[.hotel] = establishments[.hotel]?.filter({ (result) -> Bool in
+                if let _ = categoriesToFilter.firstIndex(of: result.stars!) {
+                    return true
+                }
+                return false
+            })
+    
+        } // else
+        
         if filterByName {
             var filteredData = establishments
             filteredData[.hotel] = filteredData[.hotel]?.filter{ $0.name.lowercased().contains(filterByNameString) }
@@ -53,14 +64,14 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     
     override func viewDidLoad() {
         
+        
+        ///Search configuration
         searchField.addTarget(self, action: #selector(uptadeSearchBar), for: .editingChanged)
         searchField.delegate = self
-    
-        
-        ///Search bar rounded corners
         searchLabel.layer.cornerRadius = 15
         searchLabel.clipsToBounds = true
         searchLabel.layer.masksToBounds = true
+        emptyLabel.alpha = 0
         
     
         ///Segmented control customization
@@ -77,7 +88,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
         ///Refresh control customization
         refreshControl.tintColor = UIColor.palettePink
         
-        //        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         
         ///Activity view customization
         activityView = UIActivityIndicatorView(style: .gray)
@@ -144,6 +155,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     ///Search Bar Clear Button
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         uptadeSearchBar()
+        self.emptyLabel.alpha = 0
         return true
     }
     
@@ -151,6 +163,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     @objc func uptadeSearchBar(){
         if filterByName {
             collectionViewFeed.reloadData()
+            emptyLabelStatus()
         }
     }
     
@@ -158,9 +171,21 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     @objc func onChangeOfSegment(_ sender: CustomSegmentedContrl) {
         self.currentSegment = sender.selectedSegmentIndex == 0 ? .hotel : .package
         collectionViewFeed.reloadData()
-        
+        emptyLabelStatus()
     }
     
+    func emptyLabelStatus() {
+        if currentSegment == .hotel && dataSource[.hotel]!.count == 0 {
+            self.emptyLabel.alpha = 1
+            self.emptyLabel.text = "Nenhum hotel foi encontrado"
+        } else if currentSegment == .package && dataSource[.package]!.count == 0 {
+            self.emptyLabel.alpha = 1
+            self.emptyLabel.text = "Nenhum pacote foi encontrado"
+        }
+        else {
+            self.emptyLabel.alpha = 0
+        }
+    }
     
     
     ///Cell size
@@ -189,7 +214,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
 
     ///Refresh collection view content
     @objc private func refreshData(_ sender: Any) {
-        DAO.instance.jsonReader(page: 1, requester: self, on: self)
+        readedData(establishments: dataSource)
         collectionViewFeed.reloadData()
         self.refreshControl.endRefreshing()
     }
@@ -211,6 +236,7 @@ class Feed: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionVi
     @IBAction func filterButton(_ sender: Any) {
         
         self.performSegue(withIdentifier: "filterScreen", sender: nil)
+        
         
     }
     
